@@ -12,7 +12,7 @@ const AboutHero=()=>{
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h1 className="text-5xl md:text-6xl font-serif font-bold leading-tight tracking-wide mb-6">
+          <h1 className="text-3xl w-full md:text-3xl font-serif font-bold leading-tight tracking-wide mb-6">
             Experience Serenity <br />
             with <span className="text-[#8c6f56]">Twin Brothers</span>
           </h1>
