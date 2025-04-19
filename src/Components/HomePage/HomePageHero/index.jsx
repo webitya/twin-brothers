@@ -11,7 +11,7 @@ const slides = [
     image: "/Home/1.png",
   },
   {
-    image: "/Home/1.png",
+    image: "/side-view-man-getting-professional-massage.jpg",
   },
   {
     image: "/Home/1.png",
@@ -58,7 +58,7 @@ const HomePageCarousel = () => {
         position: "relative",
         overflow: "hidden",
         width: "100%",
-        height: { xs: 300, sm: 400, md: 500, lg: 600 },
+        height: { xs: 300, sm: 400, md: 400, lg: 500 },
         boxShadow: "0 8px 24px rgba(0, 0, 0, 0.2)",
       }}
     >

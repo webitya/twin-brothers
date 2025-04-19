@@ -5,67 +5,67 @@ import SpaIcon from "@mui/icons-material/Spa";
 
 export default function ServicesHero() {
   return (
-    <section className="relative bg-[#fdfaf5] overflow-hidden min-h-[90vh] flex items-center justify-center px-6 py-24">
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+    <section className="bg-[#fefdfc] min-h-[85vh] flex items-center justify-center px-6 py-20">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center relative z-10">
+
+        {/* Left Text Content */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-5xl md:text-6xl font-extrabold tracking-tight text-[#3a2c27] leading-tight"
+          className="text-left"
         >
-          Discover Our{" "}
-          <span className="bg-gradient-to-r from-[#cbb89d] to-[#a48d71] bg-clip-text text-transparent">
-            Premium Services
-          </span>
-        </motion.h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-[#3c2e27] leading-tight">
+            Our&nbsp;
+            <span className="bg-gradient-to-r from-[#dfcdbd] to-[#bfa792] bg-clip-text text-transparent">
+              Services
+            </span>
+          </h1>
+          <p className="mt-5 text-lg md:text-xl text-[#7c6a5f] max-w-xl">
+            Experience harmony through our carefully crafted wellness treatments, personalized just for you.
+          </p>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.7 }}
-          viewport={{ once: true }}
-          className="mt-6 text-lg md:text-xl text-[#6e5e52] max-w-2xl mx-auto"
-        >
-          Tailored solutions to rejuvenate your body, mind, and soul. Crafted with care & delivered with luxury.
-        </motion.p>
+          <div className="mt-8">
+            <Button
+              variant="contained"
+              size="large"
+              startIcon={<SpaIcon />}
+              sx={{
+                background: "linear-gradient(to right, #d4c1af, #bfa792)",
+                color: "#fff",
+                px: 4,
+                py: 1.5,
+                borderRadius: "1rem",
+                fontWeight: 600,
+                fontSize: "1rem",
+                textTransform: "none",
+                "&:hover": {
+                  background: "linear-gradient(to right, #c8b4a2, #a9917c)",
+                  transform: "scale(1.05)",
+                },
+              }}
+            >
+              View Services
+            </Button>
+          </div>
+        </motion.div>
 
+        {/* Right Illustration or Image */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
           viewport={{ once: true }}
-          className="mt-10 flex justify-center"
+          className="w-full h-[300px] md:h-[400px] bg-[#f4ebe3] rounded-xl shadow-inner flex items-center justify-center"
         >
-          <Button
-            variant="contained"
-            size="large"
-            startIcon={<SpaIcon />}
-            sx={{
-              background: "linear-gradient(to right, #bca287, #9c7f66)",
-              color: "#fff",
-              px: 4,
-              py: 1.5,
-              borderRadius: "1rem",
-              boxShadow: 3,
-              fontWeight: 600,
-              fontSize: "1rem",
-              textTransform: "none",
-              "&:hover": {
-                boxShadow: 6,
-                transform: "scale(1.05)",
-                background: "linear-gradient(to right, #bca287, #9c7f66)",
-              },
-            }}
-          >
-            Explore Services
-          </Button>
+          {/* Placeholder for Image or Illustration */}
+          <span className="text-[#baa393] text-xl font-medium"><img src="/very-relaxed-young-latin-man-getting-deep-tissue-massage-his-back-wellness-spa-clinic.jpg" className="rounded-3xl" /></span>
         </motion.div>
       </div>
 
-      {/* Soft background circles */}
-      <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-[#e8dccf] rounded-full opacity-30 blur-3xl z-0" />
-      <div className="absolute bottom-[-80px] right-[-80px] w-[250px] h-[250px] bg-[#d7c4b0] rounded-full opacity-30 blur-2xl z-0" />
+      {/* Soft gradient circles */}
+      <div className="absolute top-[-80px] left-[-80px] w-[250px] h-[250px] bg-[#f1e7dd] rounded-full opacity-40 blur-2xl z-0" />
     </section>
   );
 }
