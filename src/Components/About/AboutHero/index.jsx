@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const AboutHero=()=>{
     return (
         <>
-       <section className="min-h-screen bg-gradient-to-br from-[#f9f6f1] to-[#f0eae0] text-[#3a2c27] px-4 py-20 flex items-center justify-center">
+       <section className="min-h-screen bg-gradient-to-br from-[#f9f6f1] to-[#f0eae0] text-[#3a2c27] px-10 py-20 flex items-center justify-center">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
         {/* Left Text Content */}
         <motion.div

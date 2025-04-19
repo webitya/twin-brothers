@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import {
   AppBar,
   Toolbar,
@@ -26,7 +27,7 @@ const NavbarEl = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleDrawerToggle = () => {
-    setOpen(prev => !prev);
+    setOpen((prev) => !prev);
   };
 
   return (
@@ -43,9 +44,9 @@ const NavbarEl = () => {
           ) : (
             <Box sx={{ display: "flex", gap: 2 }}>
               {navLinks.map((item, index) => (
-                <Button key={index} color="inherit" href={item.path}>
-                  {item.label}
-                </Button>
+                <Link key={index} href={item.path} passHref>
+                  <Button color="inherit">{item.label}</Button>
+                </Link>
               ))}
             </Box>
           )}

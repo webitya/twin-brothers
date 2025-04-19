@@ -1,29 +1,24 @@
 "use client";
 import React, { useState } from "react";
-import { Box, Typography, IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-// Slides data
+// Slides with spa-themed images
 const slides = [
   {
-    title: "Welcome to Our Website",
-    description: "Discover amazing services and features we offer!",
-    image: "/images/slide1.jpg",
+    image: "/Home/1.png",
   },
   {
-    title: "Quality You Can Trust",
-    description: "We ensure top quality in everything we deliver.",
-    image: "/images/slide2.jpg",
+    image: "/Home/1.png",
   },
   {
-    title: "Join Our Community",
-    description: "Be part of something bigger and grow with us.",
-    image: "/images/slide3.jpg",
+    image: "/Home/1.png",
   },
 ];
 
+// Framer Motion variants
 const slideVariants = {
   initial: (direction) => ({
     x: direction > 0 ? 300 : -300,
@@ -32,12 +27,12 @@ const slideVariants = {
   animate: {
     x: 0,
     opacity: 1,
-    transition: { duration: 0.7 },
+    transition: { duration: 0.8, ease: "easeInOut" },
   },
   exit: (direction) => ({
     x: direction > 0 ? -300 : 300,
     opacity: 0,
-    transition: { duration: 0.5 },
+    transition: { duration: 0.6, ease: "easeInOut" },
   }),
 };
 
@@ -58,7 +53,15 @@ const HomePageCarousel = () => {
   const slide = slides[index];
 
   return (
-    <Box sx={{ position: "relative", overflow: "hidden", width: "100%", height: { xs: 300, md: 450 } }}>
+    <Box
+      sx={{
+        position: "relative",
+        overflow: "hidden",
+        width: "100%",
+        height: { xs: 300, sm: 400, md: 500, lg: 600 },
+        boxShadow: "0 8px 24px rgba(0, 0, 0, 0.2)",
+      }}
+    >
       <AnimatePresence custom={direction} mode="wait">
         <motion.div
           key={index}
@@ -71,31 +74,35 @@ const HomePageCarousel = () => {
             position: "absolute",
             width: "100%",
             height: "100%",
-            backgroundImage: `url(${slide.image})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "#fff",
           }}
         >
           <Box
+            component="img"
+            src={slide.image}
+            alt={`slide-${index}`}
             sx={{
-              backgroundColor: "rgba(0,0,0,0.5)",
-              padding: 3,
-              borderRadius: 2,
-              textAlign: "center",
-              maxWidth: "90%",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              position: "absolute",
+              top: 0,
+              left: 0,
+              zIndex: -1,
+              filter: "brightness(0.85)", // subtle dim effect for softness
             }}
-          >
-            <Typography variant="h4" fontWeight="bold">
-              {slide.title}
-            </Typography>
-            <Typography variant="subtitle1" mt={2}>
-              {slide.description}
-            </Typography>
-          </Box>
+          />
+
+          <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              background: "linear-gradient(90deg, rgba(230,240,230,0.4), rgba(255,255,255,0.1))",
+              zIndex: 0,
+            }}
+          />
         </motion.div>
       </AnimatePresence>
 
@@ -107,9 +114,12 @@ const HomePageCarousel = () => {
           top: "50%",
           left: 10,
           transform: "translateY(-50%)",
-          backgroundColor: "rgba(0,0,0,0.5)",
-          color: "white",
-          "&:hover": { backgroundColor: "rgba(0,0,0,0.7)" },
+          backgroundColor: "rgba(144, 176, 144, 0.6)", // soft green
+          color: "#fff",
+          zIndex: 2,
+          "&:hover": {
+            backgroundColor: "rgba(144, 176, 144, 0.8)",
+          },
         }}
       >
         <ArrowBackIosNewIcon />
@@ -121,9 +131,12 @@ const HomePageCarousel = () => {
           top: "50%",
           right: 10,
           transform: "translateY(-50%)",
-          backgroundColor: "rgba(0,0,0,0.5)",
-          color: "white",
-          "&:hover": { backgroundColor: "rgba(0,0,0,0.7)" },
+          backgroundColor: "rgba(144, 176, 144, 0.6)",
+          color: "#fff",
+          zIndex: 2,
+          "&:hover": {
+            backgroundColor: "rgba(144, 176, 144, 0.8)",
+          },
         }}
       >
         <ArrowForwardIosIcon />

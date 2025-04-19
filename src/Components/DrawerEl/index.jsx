@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import {
   Drawer,
   List,
@@ -34,9 +35,11 @@ const DrawerEl = ({ open, onClose, navLinks }) => {
         <List>
           {navLinks.map((item, index) => (
             <ListItem key={index} disablePadding>
-              <ListItemButton component="a" href={item.path} onClick={onClose}>
-                <ListItemText primary={item.label} />
-              </ListItemButton>
+              <Link href={item.path} passHref legacyBehavior>
+                <ListItemButton component="a" onClick={onClose}>
+                  <ListItemText primary={item.label} />
+                </ListItemButton>
+              </Link>
             </ListItem>
           ))}
         </List>
