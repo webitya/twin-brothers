@@ -1,4 +1,4 @@
-"use client"
+"use client";
 // components/HomePageServicesSection.jsx
 
 import React from "react";
@@ -16,73 +16,73 @@ const services = [
     title: "Swedish Massage",
     description: "A gentle and relaxing massage to reduce stress and tension.",
     icon: <SpaIcon fontSize="inherit" />,
-    color: "from-pink-400 to-red-500",
+    color: "from-pink-300 to-red-400",
   },
   {
     title: "Deep Tissue Massage",
     description: "A therapeutic massage aimed at relieving muscle tension and pain.",
     icon: <FitnessCenterIcon fontSize="inherit" />,
-    color: "from-purple-500 to-indigo-600",
+    color: "from-indigo-400 to-purple-500",
   },
   {
     title: "Aromatherapy Massage",
     description: "Using essential oils to promote healing and relaxation.",
     icon: <LocalFloristIcon fontSize="inherit" />,
-    color: "from-green-400 to-lime-500",
+    color: "from-green-300 to-lime-400",
   },
   {
     title: "Meditation & Cupping Therapy",
     description: "Combining relaxation with ancient cupping techniques.",
     icon: <SelfImprovementIcon fontSize="inherit" />,
-    color: "from-yellow-400 to-orange-500",
+    color: "from-yellow-300 to-orange-400",
   },
   {
     title: "Sports Massage",
     description: "A deep muscle massage to help athletes recover and perform.",
     icon: <DirectionsRunIcon fontSize="inherit" />,
-    color: "from-cyan-500 to-blue-600",
+    color: "from-cyan-400 to-blue-500",
   },
   {
     title: "Baby Massage",
     description: "Gentle and soothing massages for infants to promote bonding and relaxation.",
     icon: <ChildCareIcon fontSize="inherit" />,
-    color: "from-pink-300 to-purple-400",
+    color: "from-pink-200 to-purple-300",
   },
   {
     title: "Injury Massage",
     description: "Specialized therapy for muscle and joint injuries to speed up recovery.",
     icon: <HealingIcon fontSize="inherit" />,
-    color: "from-rose-500 to-red-600",
+    color: "from-rose-400 to-red-500",
   },
   {
     title: "Hot Stone Massage",
     description: "Warm stones melt away stress and tension to promote deep muscle relaxation.",
     icon: <SpaIcon fontSize="inherit" />,
-    color: "from-amber-500 to-orange-600",
+    color: "from-amber-300 to-orange-400",
   },
   {
     title: "Thai Massage",
     description: "A dynamic and energizing massage combining stretching and acupressure.",
     icon: <SelfImprovementIcon fontSize="inherit" />,
-    color: "from-teal-400 to-cyan-500",
+    color: "from-teal-300 to-cyan-400",
   },
 ];
 
 const HomePageServicesSection = () => {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-gray-100 to-white py-20 px-6">
-      <div className="text-center mb-14">
-        <h2 className="text-5xl font-extrabold text-gray-800 tracking-tight">
-          Elevate Your Wellness
+    <section className="relative overflow-hidden bg-gradient-to-br from-[#f9f9f6] to-[#fdfdfd] py-24 px-6">
+      <div className="text-center mb-16">
+        <h2 className="text-5xl font-extrabold text-[#3A3A3A] tracking-tight leading-tight">
+          Discover Therapeutic Bliss
         </h2>
         <p className="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">
-          Discover a blend of tradition and innovation with our unique therapeutic experiences.
+          Experience the art of healing through our curated massage and therapy treatments tailored for your well-being.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
         {services.map((service, index) => {
-          const message = encodeURIComponent(`I am interested in ${service.title}`);
+          const message = encodeURIComponent(`Hi, I’m interested in ${service.title}`);
           const whatsappLink = `https://wa.me/9299826209?text=${message}`;
 
           return (
@@ -90,30 +90,30 @@ const HomePageServicesSection = () => {
               key={index}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
+              transition={{ delay: index * 0.07, duration: 0.6 }}
               viewport={{ once: true }}
-              className="bg-white/40 backdrop-blur-lg shadow-xl rounded-3xl p-8 border border-white/20 relative group hover:scale-[1.03] transition-transform duration-300"
+              className="bg-white/50 backdrop-blur-xl shadow-xl rounded-3xl p-8 border border-gray-200/30 hover:shadow-2xl hover:scale-[1.03] transition-all duration-300"
             >
               <div
-                className={`w-20 h-20 mb-6 rounded-full bg-gradient-to-br ${service.color} flex items-center justify-center text-white text-5xl shadow-lg transform group-hover:scale-110 transition-transform duration-300`}
+                className={`w-20 h-20 mb-6 rounded-full bg-gradient-to-br ${service.color} flex items-center justify-center text-white text-4xl shadow-md`}
               >
                 {service.icon}
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-3">{service.title}</h3>
-              <p className="text-gray-700 leading-relaxed mb-6">{service.description}</p>
+              <h3 className="text-2xl font-semibold text-gray-800 mb-2">{service.title}</h3>
+              <p className="text-gray-600 text-base leading-relaxed mb-6">{service.description}</p>
               <a
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-2 text-sm font-semibold rounded-full bg-green-500 hover:bg-green-600 text-white transition-all duration-200 shadow-md"
+                className="inline-block px-5 py-2 text-sm font-medium rounded-full bg-[#76b39d] hover:bg-[#5fa58c] text-white shadow-md transition-all duration-200"
               >
-                Enquiry Now
+                Enquire Now
               </a>
             </motion.div>
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -50,6 +50,13 @@ const HomePageCarousel = () => {
     setIndex((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
+  const goToSlide = (i) => {
+    if (i !== index) {
+      setDirection(i > index ? 1 : -1);
+      setIndex(i);
+    }
+  };
+
   const slide = slides[index];
 
   return (
@@ -58,8 +65,8 @@ const HomePageCarousel = () => {
         position: "relative",
         overflow: "hidden",
         width: "100%",
-        height: { xs: 300, sm: 400, md: 400, lg: 500 },
-        boxShadow: "0 8px 24px rgba(0, 0, 0, 0.2)",
+        height: { xs: 220, sm: 400, md: 450, lg: 550 },
+        boxShadow: "0 10px 40px rgba(0, 0, 0, 0.2)",
       }}
     >
       <AnimatePresence custom={direction} mode="wait">
@@ -88,7 +95,7 @@ const HomePageCarousel = () => {
               top: 0,
               left: 0,
               zIndex: -1,
-              filter: "brightness(0.85)", // subtle dim effect for softness
+              filter: "brightness(0.85)",
             }}
           />
 
@@ -114,7 +121,7 @@ const HomePageCarousel = () => {
           top: "50%",
           left: 10,
           transform: "translateY(-50%)",
-          backgroundColor: "rgba(144, 176, 144, 0.6)", // soft green
+          backgroundColor: "rgba(144, 176, 144, 0.6)",
           color: "#fff",
           zIndex: 2,
           "&:hover": {
@@ -141,6 +148,37 @@ const HomePageCarousel = () => {
       >
         <ArrowForwardIosIcon />
       </IconButton>
+
+      {/* Bottom Dots */}
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: 15,
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          gap: 1,
+          zIndex: 3,
+        }}
+      >
+        {slides.map((_, i) => (
+          <motion.div
+            key={i}
+            onClick={() => goToSlide(i)}
+            initial={false}
+            animate={{
+              width: i === index ? 22 : 10,
+              backgroundColor: i === index ? "#90B090" : "#ccc",
+            }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            style={{
+              height: 10,
+              borderRadius: 20,
+              cursor: "pointer",
+            }}
+          />
+        ))}
+      </Box>
     </Box>
   );
 };
