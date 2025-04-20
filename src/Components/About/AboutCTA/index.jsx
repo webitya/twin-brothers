@@ -44,7 +44,7 @@ export default function AboutCTA() {
         </motion.p>
 
         <motion.a
-          href="#booking"
+          href="https://wa.me/919299826209?text=Hi, I’d like to book a massage session"
           className="inline-block px-8 py-2 bg-[#a58e7c] text-white font-medium rounded-full shadow-md hover:bg-[#917c6c] hover:shadow-lg transition-all duration-300 text-lg"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}

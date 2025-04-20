@@ -1,8 +1,34 @@
 "use client";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin } from "lucide-react";
+import emailjs from 'emailjs-com';
+import { useRef } from 'react';
 
 export default function ContactPage() {
+    const formRef = useRef();
+
+    const sendEmail = (e) => {
+      e.preventDefault();
+
+      emailjs
+        .sendForm(
+          "YOUR_SERVICE_ID", // Replace with your actual service ID
+          "YOUR_TEMPLATE_ID", // Replace with your actual template ID
+          formRef.current,
+          "YOUR_PUBLIC_KEY" // Replace with your actual public key
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            alert("✅ Message sent successfully!");
+            formRef.current.reset(); // Clear form
+          },
+          (error) => {
+            console.log(error.text);
+            alert("❌ Something went wrong. Please try again.");
+          }
+        );
+    };
   return (
     <section className="min-h-screen bg-[#f9f6f2] py-20 px-6 md:px-16">
       <div className="max-w-5xl mx-auto">
@@ -15,7 +41,8 @@ export default function ContactPage() {
         >
           <h1 className="text-5xl font-bold text-[#4e4b45] mb-4">Contact Us</h1>
           <p className="text-lg text-[#7a756f] max-w-2xl mx-auto">
-            Step into serenity. Connect with the best massage therapy experience in town — curated by expert hands and calming hearts.
+            Step into serenity. Connect with the best massage therapy experience
+            in town — curated by expert hands and calming hearts.
           </p>
         </motion.div>
 
@@ -31,15 +58,22 @@ export default function ContactPage() {
             <div className="flex items-start gap-4">
               <MapPin className="text-[#c8b499]" size={28} />
               <div>
-                <h3 className="font-semibold text-lg text-[#4e4b45]">Twin Brother's therapy</h3>
-                <p className="text-[#6d655d]">1 FLOOR RAJ COMPLEX Kanke Road near cm house, opp. Speaker HOUSE, Ranchi, Jharkhand 834008</p>
+                <h3 className="font-semibold text-lg text-[#4e4b45]">
+                  Twin Brother's therapy
+                </h3>
+                <p className="text-[#6d655d]">
+                  1 FLOOR RAJ COMPLEX Kanke Road near cm house, opp. Speaker
+                  HOUSE, Ranchi, Jharkhand 834008
+                </p>
               </div>
             </div>
 
             <div className="flex items-start gap-4">
               <Phone className="text-[#c8b499]" size={28} />
               <div>
-                <h3 className="font-semibold text-lg text-[#4e4b45]">Call to Book</h3>
+                <h3 className="font-semibold text-lg text-[#4e4b45]">
+                  Call to Book
+                </h3>
                 <p className="text-[#6d655d]">+91 62998 26209</p>
               </div>
             </div>
@@ -75,30 +109,41 @@ export default function ContactPage() {
 
           {/* Contact Form */}
           <motion.form
+            ref={formRef}
+            onSubmit={sendEmail}
             className="bg-white p-8 rounded-3xl shadow-xl space-y-6"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
-            <h2 className="text-2xl font-semibold text-[#4e4b45] mb-4">Send Us a Message</h2>
+            <h2 className="text-2xl font-semibold text-[#4e4b45] mb-4">
+              Send Us a Message
+            </h2>
+
             <input
               type="text"
+              name="user_name"
               placeholder="Your Name"
               className="w-full p-4 border border-[#e5e3de] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c8b499]"
               required
             />
+
             <input
               type="email"
+              name="user_email"
               placeholder="Your Email"
               className="w-full p-4 border border-[#e5e3de] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c8b499]"
               required
             />
+
             <textarea
+              name="message"
               rows="4"
               placeholder="Your Message"
               className="w-full p-4 border border-[#e5e3de] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c8b499]"
               required
             ></textarea>
+
             <button
               type="submit"
               className="w-full bg-[#c8b499] text-white py-3 rounded-full text-lg font-medium hover:bg-[#bca177] transition-all"
@@ -115,19 +160,18 @@ export default function ContactPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
-         <iframe
-  title="Massage Center Location"
-  src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d103604.17495490695!2d85.23229690680482!3d23.388100111212157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x39f4e15fe86b5a15%3A0x88d5db0737881f6d!2s1%20FLOOR%20RAJ%20COMPLEX%20Kanke%20Road%20near%20cm%20house%2C%20opp.%20Speaker%20HOUSE%2C%20Ranchi%2C%20Jharkhand%20834008!3m2!1d23.3881217!2d85.31469849999999!5e1!3m2!1sen!2sin!4v1745064502589!5m2!1sen!2sin"
-  width="100%"
-  height="450"
-  style={{ border: 0 }}
-  allowFullScreen
-  loading="lazy"
-  referrerPolicy="no-referrer-when-downgrade"
-/>
+          <iframe
+            title="Massage Center Location"
+            src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d103604.17495490695!2d85.23229690680482!3d23.388100111212157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x39f4e15fe86b5a15%3A0x88d5db0737881f6d!2s1%20FLOOR%20RAJ%20COMPLEX%20Kanke%20Road%20near%20cm%20house%2C%20opp.%20Speaker%20HOUSE%2C%20Ranchi%2C%20Jharkhand%20834008!3m2!1d23.3881217!2d85.31469849999999!5e1!3m2!1sen!2sin!4v1745064502589!5m2!1sen!2sin"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </motion.div>
       </div>
     </section>
   );
 }
-

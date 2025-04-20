@@ -2,8 +2,12 @@
 import { motion } from "framer-motion";
 import { Button } from "@mui/material";
 import SpaIcon from "@mui/icons-material/Spa";
+import React from 'react';
 
-export default function ServicesHero() {
+export default function ServicesHero({ scrollToRef }) {
+  const handleClick = () => {
+    scrollToRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <section className="bg-[#fefdfc] min-h-[85vh] flex items-center justify-center px-6 py-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center relative z-10">
@@ -28,6 +32,7 @@ export default function ServicesHero() {
 
           <div className="mt-8">
             <Button
+             onClick={handleClick}
               variant="contained"
               size="large"
               startIcon={<SpaIcon />}

@@ -8,13 +8,13 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 // Slides with spa-themed images
 const slides = [
   {
-    image: "/Home/1.webp",
+    image: "/closeup-man-enjoying-relaxing-back-massage-with-honey-spa.webp",
   },
   {
     image: "/side-view-man-getting-professional-massage.webp",
   },
   {
-    image: "/Home/1.png",
+    image: "/high-angle-man-relaxing-spa.webp",
   },
 ];
 

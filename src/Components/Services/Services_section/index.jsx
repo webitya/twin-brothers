@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import React, { forwardRef } from 'react';
 
 const services = [
   {
@@ -59,9 +60,9 @@ const cardVariants = {
   }),
 };
 
-export default function LuxuryServicesSection() {
+ const LuxuryServicesSection = forwardRef((props, ref) => {
   return (
-    <section className="bg-[#fdfaf5] py-20 px-6 md:px-12">
+    <section className="bg-[#fdfaf5] py-0 px-8 md:px-12"  ref={ref} >
       <div className="max-w-7xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -109,4 +110,5 @@ export default function LuxuryServicesSection() {
       </div>
     </section>
   );
-}
+})
+export default LuxuryServicesSection

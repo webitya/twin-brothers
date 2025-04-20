@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from 'next/link';
 
 const AboutHero = () => {
   return (
@@ -23,15 +24,15 @@ const AboutHero = () => {
               personalized sessions to elevate your body and mind.
             </p>
             <motion.a
-              href="#book"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-block bg-[#8c6f56] text-white px-6 py-3 rounded-full shadow-lg hover:bg-[#a5866b] transition"
-            >
+              >
+              <Link href="/contact">
               Book Your Escape
+           </Link>
             </motion.a>
           </motion.div>
-
           {/* Right Image or Visual */}
           <motion.div
             className="w-full"
