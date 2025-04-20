@@ -47,7 +47,7 @@ const NavbarEl = () => {
           {/* Logo and Brand */}
           <Box display="flex" alignItems="center" gap={1.5}>
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               alt="Twin Brothers Therapy Logo"
               width={50}
               height={50}

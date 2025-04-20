@@ -61,7 +61,7 @@ export default function OurProcedureSection() {
           className="relative w-full h-[400px] md:h-[500px] mx-auto"
         >
           <Image
-            src="/medium-shot-physiotherapist-massaging-boy.jpg"
+            src="/medium-shot-physiotherapist-massaging-boy.webp"
             alt="Procedure Illustration"
             fill
             className="object-contain"

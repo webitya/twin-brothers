@@ -60,7 +60,7 @@ export default function ServicesHero() {
           className="w-full h-[300px] md:h-[400px] bg-[#f4ebe3] rounded-xl shadow-inner flex items-center justify-center"
         >
           {/* Placeholder for Image or Illustration */}
-          <span className="text-[#baa393] text-xl font-medium"><img src="/very-relaxed-young-latin-man-getting-deep-tissue-massage-his-back-wellness-spa-clinic.jpg" className="rounded-3xl" /></span>
+          <span className="text-[#baa393] text-xl font-medium"><img src="/very-relaxed-young-latin-man-getting-deep-tissue-massage-his-back-wellness-spa-clinic.webp" className="rounded-3xl" /></span>
         </motion.div>
       </div>
 

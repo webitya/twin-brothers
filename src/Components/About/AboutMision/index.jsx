@@ -45,12 +45,12 @@ export default function OurMission() {
           viewport={{ once: true }}
         >
           <img
-            src="/closeup-man-having-back-massage-spa-treatment-wellness-center.jpg"
+            src="/closeup-man-having-back-massage-spa-treatment-wellness-center.webp"
             alt="Massage therapy"
             className="w-[100%] max-w-md mx-auto rounded-2xl shadow-xl border-4 border-white"
           />
           <img
-            src="/closeup-man-having-back-massage-spa-treatment-wellness-center.jpg"
+            src="/closeup-man-having-back-massage-spa-treatment-wellness-center.webp"
             alt="Therapist"
             className="absolute bottom-[-80px] left-[-20px] w-60 md:w-82 rounded-xl shadow-xl border-4 border-white bg-white"
           />

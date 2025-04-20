@@ -8,10 +8,10 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 // Slides with spa-themed images
 const slides = [
   {
-    image: "/Home/1.png",
+    image: "/Home/1.webp",
   },
   {
-    image: "/side-view-man-getting-professional-massage.jpg",
+    image: "/side-view-man-getting-professional-massage.webp",
   },
   {
     image: "/Home/1.png",

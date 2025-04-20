@@ -6,47 +6,47 @@ const services = [
   {
     title: "Swedish Massage",
     desc: "Classic full-body massage promoting relaxation, circulation, and overall balance.",
-    icon: "/ALL massage pic/side-view-woman-working-spa.jpg",
+    icon: "/ALL massage pic/side-view-woman-working-spa.webp",
   },
   {
     title: "Deep Tissue Massage",
     desc: "Intensive pressure therapy to relieve deep muscle tension and chronic stress.",
-    icon: "/ALL massage pic/nurse-taking-care-patient.jpg",
+    icon: "/ALL massage pic/nurse-taking-care-patient.webp",
   },
   {
     title: "Aromatherapy Massage",
     desc: "Blissful massage with essential oils to soothe your senses and elevate mood.",
-    icon: "/ALL massage pic/closeup-man-getting-head-massage-relaxing-with-eyes-closed-spa copy.jpg",
+    icon: "/ALL massage pic/closeup-man-getting-head-massage-relaxing-with-eyes-closed-spa copy.webp",
   },
   {
     title: "Meditation & Cupping Therapy",
     desc: "A calming blend of mindfulness and cupping to heal body, mind, and energy.",
-    icon: "/ALL massage pic/physiotherapist-performing-cupping-session-male-patient.jpg",
+    icon: "/ALL massage pic/physiotherapist-performing-cupping-session-male-patient.webp",
   },
   {
     title: "Sports Massage",
     desc: "Performance-boosting therapy for athletes to prevent and recover from injury.",
-    icon: "/ALL massage pic/physiotherapist-examining-back-patient.jpg",
+    icon: "/ALL massage pic/physiotherapist-examining-back-patient.webp",
   },
   {
     title: "Baby Massage",
     desc: "Gentle and loving touch to nurture healthy growth, sleep, and comfort for babies.",
-    icon: "/ALL massage pic/mother-holding-newborn-baby-feet.jpg",
+    icon: "/ALL massage pic/mother-holding-newborn-baby-feet.webp",
   },
   {
     title: "Injury Massage",
     desc: "Therapeutic care tailored for injury recovery and muscular rehabilitation.",
-    icon: "/ALL massage pic/young-physiotherapy-professional-applying-kt-tape-athlete-s-knee-hospital.jpg",
+    icon: "/ALL massage pic/young-physiotherapy-professional-applying-kt-tape-athlete-s-knee-hospital.webp",
   },
   {
     title: "Hot Stone Massage",
     desc: "Smooth, heated stones melt tension and deeply relax body and soul.",
-    icon: "/ALL massage pic/young-woman-massaging-her-client-with-stones.jpg",
+    icon: "/ALL massage pic/young-woman-massaging-her-client-with-stones.webp",
   },
   {
     title: "Thai Massage",
     desc: "Ancient healing art combining yoga-like stretches and energy alignment.",
-    icon: "/ALL massage pic/high-angle-man-getting-massage.jpg",
+    icon: "/ALL massage pic/high-angle-man-getting-massage.webp",
   },
 ];
 

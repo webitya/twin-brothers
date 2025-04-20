@@ -42,7 +42,7 @@ const AboutHero = () => {
           >
             <div className="rounded-3xl overflow-hidden shadow-xl">
               <img
-                src="/brand/logo.jpg" // Replace with your real hero image
+                src="/brand/logo.webp" // Replace with your real hero image
                 alt="Twin Brothers Massage"
                 className="w-full h-auto object-cover"
               />

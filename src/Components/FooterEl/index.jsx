@@ -36,7 +36,7 @@ const Footer = () => {
         <div>
           <div className="flex items-center mb-3">
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               alt="Twin Brothers Therapy Logo"
               width={50}
               height={50}

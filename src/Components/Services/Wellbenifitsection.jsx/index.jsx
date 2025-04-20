@@ -65,7 +65,7 @@ export default function WellnessBenefitsSection() {
           className="relative w-full h-[400px] md:h-[500px] rounded-3xl overflow-hidden shadow-2xl"
         >
           <Image
-            src="/side-view-man-getting-professional-massage.jpg.crdownload" // Replace with your image path
+            src="/side-view-man-getting-professional-massage.webp" // Replace with your image path
             alt="Acupuncture Wellness"
             layout="fill"
             objectFit="cover"
