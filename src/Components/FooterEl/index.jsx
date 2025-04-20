@@ -1,7 +1,9 @@
-"use client"
+"use client";
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import SpaIcon from "@mui/icons-material/Spa";
+import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   const form = useRef();
@@ -11,10 +13,10 @@ const Footer = () => {
     e.preventDefault();
     emailjs
       .sendForm(
-        "YOUR_SERVICE_ID",      // replace with your actual service ID
-        "YOUR_TEMPLATE_ID",     // replace with your actual template ID
+        "YOUR_SERVICE_ID", // Replace with your actual values
+        "YOUR_TEMPLATE_ID",
         form.current,
-        "YOUR_PUBLIC_KEY"       // replace with your actual public key
+        "YOUR_PUBLIC_KEY"
       )
       .then(
         (result) => {
@@ -28,46 +30,70 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white pt-16 pb-8 px-6 md:px-16">
+    <footer className="bg-[#1e1e1e] text-[#e4e4e4] pt-16 pb-10 px-6 md:px-16 font-[Lato]">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
-        {/* Brand Logo and Description */}
+        {/* Logo & Brand */}
         <div>
-          <div className="flex items-center mb-3 text-white text-2xl font-semibold">
-            <SpaIcon className="mr-2 text-pink-400" />
-            ZenTherapy
+          <div className="flex items-center mb-3">
+            <Image
+              src="/logo.png"
+              alt="Twin Brothers Therapy Logo"
+              width={50}
+              height={50}
+              className="rounded-md"
+            />
+            <span className="ml-3 text-2xl font-semibold font-[Playfair_Display] text-white">
+              Twin Brothers Therapy
+            </span>
           </div>
-          <p className="text-gray-400">
-            Rest, relax and renew your body & soul with our healing therapies...
+          <p className="text-gray-400 mt-2">
+            Rejuvenate your body and spirit with our luxurious massage and therapy treatments.
           </p>
         </div>
 
-        {/* Our Services */}
+        {/* Services */}
         <div>
-          <h4 className="text-lg font-semibold mb-4">Our Services</h4>
+          <h4 className="text-lg font-semibold mb-4 font-[Playfair_Display] text-white">Our Services</h4>
           <ul className="space-y-2 text-gray-400">
             <li>Swedish Massage</li>
-            <li>Deep Tissue Massage</li>
+            <li>Deep Tissue Therapy</li>
             <li>Hot Stone Massage</li>
-            <li>Thai Massage</li>
+            <li>Thai Bodywork</li>
           </ul>
         </div>
 
-        {/* About Company */}
+        {/* Links */}
         <div>
-          <h4 className="text-lg font-semibold mb-4">About Company</h4>
+          <h4 className="text-lg font-semibold mb-4 font-[Playfair_Display] text-white">About Company</h4>
           <ul className="space-y-2 text-gray-400">
-            <li>FAQs</li>
-            <li>Privacy Policy</li>
-            <li>Terms & Conditions</li>
-            <li>Contact Us</li>
+            <li>
+              <Link href="/faq" className="hover:text-white transition">
+                FAQs
+              </Link>
+            </li>
+            <li>
+              <Link href="/privacy-policy" className="hover:text-white transition">
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link href="/terms-and-conditions" className="hover:text-white transition">
+                Terms & Conditions
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className="hover:text-white transition">
+                Contact Us
+              </Link>
+            </li>
           </ul>
         </div>
 
-        {/* Subscribe Form */}
+        {/* Newsletter */}
         <div>
-          <h4 className="text-lg font-semibold mb-4">Subscribe Now</h4>
+          <h4 className="text-lg font-semibold mb-4 font-[Playfair_Display] text-white">Stay Updated</h4>
           {submitted ? (
-            <p className="text-green-400">Thank you for subscribing!</p>
+            <p className="text-green-400 font-medium">Thank you for subscribing!</p>
           ) : (
             <form ref={form} onSubmit={sendEmail} className="space-y-3">
               <input
@@ -75,7 +101,7 @@ const Footer = () => {
                 name="user_email"
                 required
                 placeholder="Enter your email"
-                className="w-full px-4 py-2 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                className="w-full px-4 py-2 rounded-md text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-400"
               />
               <button
                 type="submit"
@@ -88,8 +114,9 @@ const Footer = () => {
         </div>
       </div>
 
+      {/* Bottom Text */}
       <div className="text-center text-gray-500 mt-16 border-t border-gray-700 pt-6 text-sm">
-        © {new Date().getFullYear()} ZenTherapy. All rights reserved....
+        © {new Date().getFullYear()} Twin Brothers Therapy. All rights reserved.
       </div>
     </footer>
   );

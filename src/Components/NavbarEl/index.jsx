@@ -13,6 +13,7 @@ import {
   useTheme,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import PhoneIcon from "@mui/icons-material/Phone";
 import DrawerEl from "../DrawerEl";
 
 const navLinks = [
@@ -37,8 +38,8 @@ const NavbarEl = () => {
         position="static"
         elevation={0}
         sx={{
-          backgroundColor: "#f8f5f2", // Soft beige
-          color: "#3e3e3e", // Charcoal
+          backgroundColor: "#f8f5f2",
+          color: "#3e3e3e",
           borderBottom: "1px solid #e0e0e0",
         }}
       >
@@ -66,13 +67,13 @@ const NavbarEl = () => {
             </Typography>
           </Box>
 
-          {/* Nav Links */}
+          {/* Nav Links + Call Button */}
           {isMobile ? (
             <IconButton edge="start" onClick={handleDrawerToggle} sx={{ color: "#2e3a2d" }}>
               <MenuIcon />
             </IconButton>
           ) : (
-            <Box sx={{ display: "flex", gap: 3 }}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
               {navLinks.map((item, index) => (
                 <Link key={index} href={item.path} passHref>
                   <Button
@@ -90,7 +91,7 @@ const NavbarEl = () => {
                         left: 0,
                         width: "0%",
                         height: "2px",
-                        backgroundColor: "#a4c3b2", // soft green underline
+                        backgroundColor: "#a4c3b2",
                         transition: "width 0.3s",
                       },
                       "&:hover::after": {
@@ -102,6 +103,31 @@ const NavbarEl = () => {
                   </Button>
                 </Link>
               ))}
+
+              {/* Call Button */}
+              <Button
+                startIcon={<PhoneIcon />}
+                href="tel:+916299826209"
+                sx={{
+                  ml: 2,
+                  px: 2.5,
+                  py: 1,
+                  backgroundColor: "#a4c3b2",
+                  color: "#fff",
+                  textTransform: "none",
+                  fontWeight: 600,
+                  borderRadius: "8px",
+                  boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
+                  fontSize: "0.9rem",
+                  fontFamily: "'Lato', sans-serif",
+                  transition: "all 0.3s",
+                  "&:hover": {
+                    backgroundColor: "#8fb2a3",
+                  },
+                }}
+              >
+                +91 6299 826 209
+              </Button>
             </Box>
           )}
         </Toolbar>
