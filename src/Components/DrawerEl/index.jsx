@@ -45,7 +45,7 @@ const DrawerEl = ({ open, onClose, navLinks }) => {
         >
           <Box display="flex" alignItems="center" gap={1.2}>
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               alt="Twin Brothers Therapy Logo"
               width={40}
               height={40}
