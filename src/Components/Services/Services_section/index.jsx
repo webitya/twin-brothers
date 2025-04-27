@@ -17,7 +17,7 @@ const services = [
   {
     title: "Aromatherapy Massage",
     desc: "Blissful massage with essential oils to soothe your senses and elevate mood.",
-    icon: "/ALL massage pic/closeup-man-getting-head-massage-relaxing-with-eyes-closed-spa copy.webp",
+    icon: "/ALL massage pic/closeup-man-getting-head-massage-relaxing-with-eyes-closed-spacopy.webp",
   },
   {
     title: "Meditation & Cupping Therapy",
