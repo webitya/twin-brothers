@@ -9,7 +9,7 @@ export default function ServicesHero({ scrollToRef }) {
     scrollToRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
   return (
-    <section className="bg-[#fefdfc] min-h-[85vh] flex items-center justify-center px-6 py-20">
+    <section className="bg-[#fefdfc] min-h-[85vh] flex items-center justify-center px-6 py-20 mt-[-50px]">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center relative z-10">
 
         {/* Left Text Content */}

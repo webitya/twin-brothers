@@ -60,7 +60,8 @@ const HomePageCarousel = () => {
   const slide = slides[index];
 
   return (
-    <Box
+   <div className="mt-[-50px]">
+ <Box 
       sx={{
         position: "relative",
         overflow: "hidden",
@@ -180,6 +181,8 @@ const HomePageCarousel = () => {
         ))}
       </Box>
     </Box>
+
+   </div>
   );
 };
 

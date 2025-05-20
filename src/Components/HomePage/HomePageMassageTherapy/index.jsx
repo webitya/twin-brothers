@@ -27,7 +27,7 @@ const HomePageMassageTherapySection = () => {
     <Box
       sx={{
         backgroundColor: "#f0f7f4",
-        py: { xs: 6, sm: 8, md: 10 },
+        py: { xs: 3, sm: 3, md: 3 },
         px: { xs: 2, sm: 4, md: 8 },
       }}
     >

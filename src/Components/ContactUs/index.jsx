@@ -30,7 +30,7 @@ export default function ContactPage() {
         );
     };
   return (
-    <section className="min-h-screen bg-[#f9f6f2] py-20 px-6 md:px-16">
+    <section className="min-h-screen bg-[#f9f6f2] py-20 px-6 md:px-16 mt-[-50px]">
       <div className="max-w-5xl mx-auto">
         {/* Heading */}
         <motion.div
