@@ -50,7 +50,8 @@ const NavbarEl = () => {
   return (
     <>
       <AppBar
-        position="fixed"
+        position="fixed" 
+        style={{zIndex:"99999"}}
         elevation={isSticky ? 4 : 0}
         sx={{
           backgroundColor: isSticky ? "#f8f5f2" : "transparent",
@@ -64,7 +65,8 @@ const NavbarEl = () => {
             display: "flex",
             justifyContent: "space-between",
             px: { xs: 2, md: 6 },
-            py: 1.5,
+            py: 1.5, 
+            zIndex:"9999"
           }}
         >
           {/* Logo and Brand */}
