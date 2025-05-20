@@ -18,7 +18,8 @@ import CallIcon from "@mui/icons-material/Call";
 
 const DrawerEl = ({ open, onClose, navLinks }) => {
   return (
-    <Drawer anchor="right" open={open} onClose={onClose}>
+   <div style={{zIndex:"999999999"}}>
+ <Drawer anchor="right" open={open} onClose={onClose}> 
       <Box
         sx={{
           width: 270,
@@ -145,6 +146,8 @@ const DrawerEl = ({ open, onClose, navLinks }) => {
         </Box>
       </Box>
     </Drawer>
+
+   </div>
   );
 };
 
