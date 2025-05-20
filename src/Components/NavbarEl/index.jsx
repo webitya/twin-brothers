@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -11,13 +11,12 @@ import {
   Button,
   useMediaQuery,
   useTheme,
-  Slide,
-  useScrollTrigger,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import PhoneIcon from "@mui/icons-material/Phone";
 import DrawerEl from "../DrawerEl";
 
+// Navigation links
 const navLinks = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
@@ -28,20 +27,9 @@ const navLinks = [
 
 const NavbarEl = () => {
   const [open, setOpen] = useState(false);
-  const [isSticky, setIsSticky] = useState(false);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
-  // Scroll handler
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 100);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const handleDrawerToggle = () => {
     setOpen((prev) => !prev);
@@ -50,14 +38,13 @@ const NavbarEl = () => {
   return (
     <>
       <AppBar
-        position="fixed" 
-        style={{zIndex:"99999"}}
-        elevation={isSticky ? 4 : 0}
+        position="fixed"
+        elevation={2}
         sx={{
-          backgroundColor: isSticky ? "#f8f5f2" : "transparent",
+          backgroundColor: "#f8f5f2", // Fixed background color
           color: "#3e3e3e",
-          borderBottom: isSticky ? "1px solid #e0e0e0" : "none",
-          transition: "all 0.3s ease-in-out",
+          borderBottom: "1px solid #e0e0e0",
+          zIndex: 1300,
         }}
       >
         <Toolbar
@@ -65,8 +52,7 @@ const NavbarEl = () => {
             display: "flex",
             justifyContent: "space-between",
             px: { xs: 2, md: 6 },
-            py: 1.5, 
-            zIndex:"9999"
+            py: 1.5,
           }}
         >
           {/* Logo and Brand */}
@@ -92,9 +78,14 @@ const NavbarEl = () => {
             </Typography>
           </Box>
 
-          {/* Nav Links + Call Button */}
+          {/* Desktop Nav or Mobile Menu */}
           {isMobile ? (
-            <IconButton edge="start" onClick={handleDrawerToggle} sx={{ color: "#2e3a2d" }}>
+            <IconButton
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ color: "#2e3a2d" }}
+              aria-label="menu"
+            >
               <MenuIcon />
             </IconButton>
           ) : (
@@ -158,7 +149,7 @@ const NavbarEl = () => {
         </Toolbar>
       </AppBar>
 
-      {/* Push content down to avoid hidden elements behind sticky AppBar */}
+      {/* Push content below AppBar */}
       <Box sx={{ height: { xs: 75, md: 90 } }} />
 
       <DrawerEl open={open} onClose={handleDrawerToggle} navLinks={navLinks} />

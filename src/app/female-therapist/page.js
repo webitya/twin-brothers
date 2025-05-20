@@ -201,14 +201,14 @@ export default function Home() {
   ]
 
   return (
-    <div className="relative">
+    <div className="relative mt-[-70px]">
       {/* Progress bar */}
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-rose-500 z-50" style={{ scaleX: scrollYProgress }} />
 
 
 
 
-      <main className="pt-0">
+      <main className="">
         {/* Hero Section */}
         <section
           id="home"
