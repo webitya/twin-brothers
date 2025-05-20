@@ -551,7 +551,7 @@ export default function Home() {
               >
                 <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
                   <img
-                    src="/placeholder.svg?height=600&width=800"
+                    src="https://res.cloudinary.com/dxqthnbx7/image/upload/v1747755988/femaile-therapist_nz1vws.webp"
                     alt="Female Massage Therapist"
                     className="w-full h-auto"
                   />
