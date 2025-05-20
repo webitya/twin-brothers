@@ -44,7 +44,7 @@ const NavbarEl = () => {
           backgroundColor: "#f8f5f2", // Fixed background color
           color: "#3e3e3e",
           borderBottom: "1px solid #e0e0e0",
-          zIndex: 1300,
+          zIndex: 99,
         }}
       >
         <Toolbar
