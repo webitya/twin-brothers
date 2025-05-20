@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -11,6 +11,8 @@ import {
   Button,
   useMediaQuery,
   useTheme,
+  Slide,
+  useScrollTrigger,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -20,13 +22,26 @@ const navLinks = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
   { label: "Services", path: "/services" },
+  { label: "Female Therapist", path: "/female-therapist" },
   { label: "Contact", path: "/contact" },
 ];
 
 const NavbarEl = () => {
   const [open, setOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  // Scroll handler
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleDrawerToggle = () => {
     setOpen((prev) => !prev);
@@ -35,15 +50,23 @@ const NavbarEl = () => {
   return (
     <>
       <AppBar
-        position="static"
-        elevation={0}
+        position="fixed"
+        elevation={isSticky ? 4 : 0}
         sx={{
-          backgroundColor: "#f8f5f2",
+          backgroundColor: isSticky ? "#f8f5f2" : "transparent",
           color: "#3e3e3e",
-          borderBottom: "1px solid #e0e0e0",
+          borderBottom: isSticky ? "1px solid #e0e0e0" : "none",
+          transition: "all 0.3s ease-in-out",
         }}
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between", px: { xs: 2, md: 6 } }}>
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            px: { xs: 2, md: 6 },
+            py: 1.5,
+          }}
+        >
           {/* Logo and Brand */}
           <Box display="flex" alignItems="center" gap={1.5}>
             <Image
@@ -132,6 +155,10 @@ const NavbarEl = () => {
           )}
         </Toolbar>
       </AppBar>
+
+      {/* Push content down to avoid hidden elements behind sticky AppBar */}
+      <Box sx={{ height: { xs: 75, md: 90 } }} />
+
       <DrawerEl open={open} onClose={handleDrawerToggle} navLinks={navLinks} />
     </>
   );
