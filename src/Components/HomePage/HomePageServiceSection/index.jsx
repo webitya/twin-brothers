@@ -13,13 +13,13 @@ import HealingIcon from "@mui/icons-material/Healing";
 
 const services = [
   {
-    title: "Swedish Massage",
+    title: "Swedish Massage Therapy",
     description: "A gentle and relaxing massage to reduce stress and tension.",
     icon: <SpaIcon fontSize="inherit" />,
     color: "from-pink-300 to-red-400",
   },
   {
-    title: "Deep Tissue Massage",
+    title: "Deep Tissue Massage Therapy",
     description: "A therapeutic massage aimed at relieving muscle tension and pain.",
     icon: <FitnessCenterIcon fontSize="inherit" />,
     color: "from-indigo-400 to-purple-500",
@@ -30,12 +30,7 @@ const services = [
   icon: <HealingIcon fontSize="inherit" />,
   color: "from-red-300 to-rose-400",
 },
-  {
-    title: "Aromatherapy Massage",
-    description: "Using essential oils to promote healing and relaxation.",
-    icon: <LocalFloristIcon fontSize="inherit" />,
-    color: "from-green-300 to-lime-400",
-  },
+ 
   {
     title: "Sound Healing Therapy",
     description: "Combining relaxation with ancient cupping techniques.",
@@ -55,23 +50,12 @@ const services = [
     color: "from-pink-200 to-purple-300",
   },
   {
-    title: "Injury Massage",
+    title: "Injury Recovery Session",
     description: "Specialized therapy for muscle and joint injuries to speed up recovery.",
     icon: <HealingIcon fontSize="inherit" />,
     color: "from-rose-400 to-red-500",
   },
-  {
-    title: "Hot Stone Massage",
-    description: "Warm stones melt away stress and tension to promote deep muscle relaxation.",
-    icon: <SpaIcon fontSize="inherit" />,
-    color: "from-amber-300 to-orange-400",
-  },
-  {
-    title: "Thai Massage",
-    description: "A dynamic and energizing massage combining stretching and acupressure.",
-    icon: <SelfImprovementIcon fontSize="inherit" />,
-    color: "from-teal-300 to-cyan-400",
-  },
+
 ];
 
 const HomePageServicesSection = () => {
