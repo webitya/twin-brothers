@@ -334,9 +334,9 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-gray-700">
-                  Mon - Sat: 9:00 AM - 8:00 PM
+                  Mon - Sat: 9:00 AM - 6:00 PM
                   <br />
-                  Sunday: 10:00 AM - 4:00 PM
+                  Sunday: 06:00 AM - 2:00 PM
                 </p>
               </motion.div>
 
