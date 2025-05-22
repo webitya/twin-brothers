@@ -4,6 +4,7 @@ import NavbarEl from "@/Components/NavbarEl";
 import Footer from "@/Components/FooterEl";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import PhoneIcon from "@mui/icons-material/Phone";
+import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,23 +27,41 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <Head>
+        {/* Google tag (gtag.js) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-6FEMZPWR9J"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-6FEMZPWR9J');
+            `,
+          }}
+        />
+      </Head>
+
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NavbarEl />
         {children}
         <Footer />
 
         {/* Floating Icons */}
-        <div style={{
-          position: "fixed",
-          bottom: "20px",
-          right: "20px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-          zIndex: 1000,
-        }}>
+        <div
+          style={{
+            position: "fixed",
+            bottom: "20px",
+            right: "20px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            zIndex: 1000,
+          }}
+        >
           {/* WhatsApp Button */}
           <a
             href="https://wa.me/916299826209"
