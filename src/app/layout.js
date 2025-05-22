@@ -4,7 +4,7 @@ import NavbarEl from "@/Components/NavbarEl";
 import Footer from "@/Components/FooterEl";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import PhoneIcon from "@mui/icons-material/Phone";
-import Head from "next/head";
+import Script from "next/script"; // ✅ Correct way to load GA scripts
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,30 +27,35 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Head>
-        {/* Google tag (gtag.js) */}
-        <script
-          async
+      <head />
+
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* ✅ Google Analytics Scripts */}
+        <Script
+          strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-6FEMZPWR9J"
-        ></script>
-        <script
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-6FEMZPWR9J');
+              gtag('config', 'G-6FEMZPWR9J', {
+                page_path: window.location.pathname,
+              });
             `,
           }}
         />
-      </Head>
 
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* Site Layout */}
         <NavbarEl />
         {children}
         <Footer />
 
-        {/* Floating Icons */}
+        {/* Floating Contact Icons */}
         <div
           style={{
             position: "fixed",
