@@ -31,19 +31,19 @@ const services = [
     color: "from-green-300 to-lime-400",
   },
   {
-    title: "Meditation & Cupping Therapy",
+    title: "Sound Healing Therapy",
     description: "Combining relaxation with ancient cupping techniques.",
     icon: <SelfImprovementIcon fontSize="inherit" />,
     color: "from-yellow-300 to-orange-400",
   },
   {
-    title: "Sports Massage",
+    title: "Sports Massage Therapy",
     description: "A deep muscle massage to help athletes recover and perform.",
     icon: <DirectionsRunIcon fontSize="inherit" />,
     color: "from-cyan-400 to-blue-500",
   },
   {
-    title: "Baby Massage",
+    title: "Baby Massage Therapy",
     description: "Gentle and soothing massages for infants to promote bonding and relaxation.",
     icon: <ChildCareIcon fontSize="inherit" />,
     color: "from-pink-200 to-purple-300",
