@@ -25,6 +25,12 @@ const services = [
     color: "from-indigo-400 to-purple-500",
   },
   {
+  title: "Cupping Therapy",
+  description: "An ancient form of therapy that helps with pain, inflammation, and blood flow using special cups.",
+  icon: <HealingIcon fontSize="inherit" />,
+  color: "from-red-300 to-rose-400",
+},
+  {
     title: "Aromatherapy Massage",
     description: "Using essential oils to promote healing and relaxation.",
     icon: <LocalFloristIcon fontSize="inherit" />,
