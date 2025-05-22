@@ -13,27 +13,22 @@ const Footer = () => {
     e.preventDefault();
     emailjs
       .sendForm(
-        "YOUR_SERVICE_ID", // Replace with your actual values
+        "YOUR_SERVICE_ID",
         "YOUR_TEMPLATE_ID",
         form.current,
         "YOUR_PUBLIC_KEY"
       )
       .then(
-        (result) => {
-          console.log(result.text);
-          setSubmitted(true);
-        },
-        (error) => {
-          console.log(error.text);
-        }
+        () => setSubmitted(true),
+        (error) => console.error(error.text)
       );
   };
 
   return (
     <footer className="bg-[#1e1e1e] text-[#e4e4e4] pt-16 pb-10 px-6 md:px-16 font-[Lato]">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
-        {/* Logo & Brand */}
-        <div>
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10">
+        {/* Logo + Brand */}
+        <div className="col-span-1 md:col-span-2">
           <div className="flex items-center mb-3">
             <Image
               src="/logo.webp"
@@ -46,54 +41,51 @@ const Footer = () => {
               Twin Brothers Therapy
             </span>
           </div>
-          <p className="text-gray-400 mt-2">
-            Rejuvenate your body and spirit with our luxurious massage and therapy treatments.
+          <p className="text-gray-400 mt-2 text-sm leading-relaxed">
+            Rejuvenate your body and spirit with therapies like Swedish,
+            Deep Tissue, Cupping, and Sound Healing. Pain relief, stress
+            reduction, and wellness await you.
           </p>
         </div>
 
         {/* Services */}
         <div>
-          <h4 className="text-lg font-semibold mb-4 font-[Playfair_Display] text-white">Our Services</h4>
-          <ul className="space-y-2 text-gray-400">
-            <li>Swedish Massage</li>
-            <li>Deep Tissue Therapy</li>
-            <li>Hot Stone Massage</li>
-            <li>Thai Bodywork</li>
+          <h4 className="text-lg font-semibold mb-4 font-[Playfair_Display] text-white">
+            Our Services
+          </h4>
+          <ul className="space-y-2 text-sm text-gray-400">
+            <li><Link href="#">Swedish Massage</Link></li>
+            <li><Link href="#">Deep Tissue Therapy</Link></li>
+            <li><Link href="#">Cupping Therapy</Link></li>
+            <li><Link href="#">Sound Healing</Link></li>
+            <li><Link href="#">Migraine & Sinus Relief</Link></li>
+            <li><Link href="#">Frozen Shoulder Care</Link></li>
+            <li><Link href="#">Slip Disc & Sciatica</Link></li>
           </ul>
         </div>
 
-        {/* Links */}
+        {/* Quick Links */}
         <div>
-          <h4 className="text-lg font-semibold mb-4 font-[Playfair_Display] text-white">About Company</h4>
-          <ul className="space-y-2 text-gray-400">
-            <li>
-              <Link href="/faq" className="hover:text-white transition">
-                FAQs
-              </Link>
-            </li>
-            <li>
-              <Link href="/privacy-policy" className="hover:text-white transition">
-                Privacy Policy
-              </Link>
-            </li>
-            <li>
-              <Link href="/terms-and-conditions" className="hover:text-white transition">
-                Terms & Conditions
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-white transition">
-                Contact Us
-              </Link>
-            </li>
+          <h4 className="text-lg font-semibold mb-4 font-[Playfair_Display] text-white">
+            Quick Links
+          </h4>
+          <ul className="space-y-2 text-sm text-gray-400">
+            <li><Link href="/faq">FAQs</Link></li>
+            <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+            <li><Link href="/terms-and-conditions">Terms & Conditions</Link></li>
+            <li><Link href="/contact">Contact Us</Link></li>
           </ul>
         </div>
 
         {/* Newsletter */}
         <div>
-          <h4 className="text-lg font-semibold mb-4 font-[Playfair_Display] text-white">Stay Updated</h4>
+          <h4 className="text-lg font-semibold mb-4 font-[Playfair_Display] text-white">
+            Stay Updated
+          </h4>
           {submitted ? (
-            <p className="text-green-400 font-medium">Thank you for subscribing!</p>
+            <p className="text-green-400 font-medium">
+              Thank you for subscribing!
+            </p>
           ) : (
             <form ref={form} onSubmit={sendEmail} className="space-y-3">
               <input
@@ -114,9 +106,17 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Text */}
-      <div className="text-center text-gray-500 mt-16 border-t border-gray-700 pt-6 text-sm">
-        © {new Date().getFullYear()} Twin Brothers Therapy. All rights reserved.
+      {/* Contact + Copyright */}
+      <div className="mt-14 text-sm text-gray-400 border-t border-gray-700 pt-6 text-center space-y-2">
+        <div>
+          📍 1st Floor, Raj Complex, Kanke Road, near CM House, Ranchi, Jharkhand
+        </div>
+        <div>
+          📞 +91 62998 26209 &nbsp; | &nbsp; 📧 twinbrotherstherapy@contact.in
+        </div>
+        <div className="pt-2 text-gray-500">
+          © {new Date().getFullYear()} Twin Brothers Therapy. All rights reserved.
+        </div>
       </div>
     </footer>
   );
