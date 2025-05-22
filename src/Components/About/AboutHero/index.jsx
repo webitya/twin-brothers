@@ -5,7 +5,7 @@ import Link from 'next/link';
 const AboutHero = () => {
   return (
     <>
-      <section className="mt-[-70px] min-h-screen bg-gradient-to-br from-[#f9f6f1] to-[#f0eae0] text-[#3a2c27] flex items-center justify-center px-6 py-10 sm:py-16">
+      <section className="md:mt-[-60px] min-h-screen bg-gradient-to-br from-[#f9f6f1] to-[#f0eae0] text-[#3a2c27] flex items-center justify-center px-6 py-10 sm:py-16">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
           {/* Left Text Content */}
           <motion.div
