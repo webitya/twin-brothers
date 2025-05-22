@@ -12,10 +12,10 @@ export default function ContactPage() {
 
       emailjs
         .sendForm(
-          "YOUR_SERVICE_ID", // Replace with your actual service ID
-          "YOUR_TEMPLATE_ID", // Replace with your actual template ID
+          "service_twinbrothers1", // Replace with your actual service ID
+          "template_9v41ay7", // Replace with your actual template ID
           formRef.current,
-          "YOUR_PUBLIC_KEY" // Replace with your actual public key
+          "ehY0W_DblRAKvNLN8" // Replace with your actual public key
         )
         .then(
           (result) => {

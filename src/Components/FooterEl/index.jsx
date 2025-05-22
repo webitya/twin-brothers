@@ -13,10 +13,10 @@ const Footer = () => {
     e.preventDefault();
     emailjs
       .sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
+       "service_twinbrothers1",
+        "template_9v41ay7",
         form.current,
-        "YOUR_PUBLIC_KEY"
+        "ehY0W_DblRAKvNLN8"
       )
       .then(
         () => setSubmitted(true),
