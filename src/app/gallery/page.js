@@ -254,9 +254,9 @@ export default function Gallery() {
               {/* Close Button */}
               <button
                 onClick={closeModal}
-                className="absolute top-4 right-4 z-20 bg-black/50 hover:bg-black/70 text-white rounded-full p-3 md:p-2 md:bg-white md:bg-opacity-90 md:hover:bg-opacity-100 md:text-gray-700 transition-all duration-200"
+                className="absolute top-4 right-4 z-20 bg-black/70 hover:bg-black/90 text-white rounded-full p-3 transition-all duration-200 flex items-center justify-center"
               >
-                <Close className="text-xl md:text-base" />
+                <Close className="text-xl" />
               </button>
 
               {/* Navigation Arrows */}
