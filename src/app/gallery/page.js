@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { FilterList, Close, ArrowBackIos, ArrowForwardIos, TouchApp } from "@mui/icons-material"
+import { FilterList, Close, ArrowBackIos, ArrowForwardIos, TouchApp, WhatsApp } from "@mui/icons-material"
 import { galleryData, categories } from "@/Components/Gallery/galleryData"
 
 export default function Gallery() {
@@ -43,6 +43,14 @@ export default function Gallery() {
     const prevIndex = currentImageIndex === 0 ? filteredImages.length - 1 : currentImageIndex - 1
     setCurrentImageIndex(prevIndex)
     setSelectedImage(filteredImages[prevIndex])
+  }
+
+  // WhatsApp enquiry function
+  const handleWhatsAppEnquiry = (serviceName) => {
+    const phoneNumber = "916299826209" // +91 6299 826 209
+    const message = `Hi Twin Brothers Therapy! I'm interested in learning more about your ${serviceName} service. Could you please provide me with more details about pricing, availability, and booking? Thank you!`
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+    window.open(whatsappUrl, "_blank")
   }
 
   // Touch handlers for swipe gestures
@@ -186,11 +194,12 @@ export default function Gallery() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer group active:shadow-xl transition-shadow duration-200"
-                onClick={() => openModal(item, index)}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-200"
               >
-                <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
+                <div
+                  className="relative h-48 sm:h-56 md:h-64 overflow-hidden cursor-pointer"
+                  onClick={() => openModal(item, index)}
+                >
                   <img
                     src={item.image || "/placeholder.svg?height=400&width=600"}
                     alt={item.title}
@@ -211,9 +220,21 @@ export default function Gallery() {
                   <div className="inline-block px-3 py-1 bg-teal-100 text-teal-700 text-xs font-medium rounded-full mb-2">
                     {item.category}
                   </div>
-                  <h3 className="text-base md:text-lg font-semibold text-gray-800 group-hover:text-teal-600 transition-colors duration-300 line-clamp-2">
-                    {item.title}
-                  </h3>
+                  <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-3 line-clamp-2">{item.title}</h3>
+
+                  {/* Enquiry Now Button */}
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      handleWhatsAppEnquiry(item.category)
+                    }}
+                    className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors duration-200 shadow-sm hover:shadow-md"
+                  >
+                    <WhatsApp className="text-lg" />
+                    <span>Enquiry Now</span>
+                  </motion.button>
                 </div>
               </motion.div>
             ))}
@@ -234,7 +255,7 @@ export default function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 backdrop-blur-md bg-white/30 dark:bg-gray-900/30 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 backdrop-blur-md  bg-white/30 dark:bg-gray-900/30 z-50 flex items-center justify-center !p-5"
             onClick={closeModal}
           >
             <motion.div
@@ -242,7 +263,7 @@ export default function Gallery() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="relative bg-white/80 backdrop-blur-sm border border-white/20 rounded-xl overflow-hidden shadow-2xl max-w-[500px] max-h-[320px] w-full"
+              className="relative bg-white/80 backdrop-blur-sm border border-white/20 rounded-xl overflow-hidden shadow-2xl max-w-[500px] max-h-[380px] w-full"
               onClick={(e) => e.stopPropagation()}
               onTouchStart={onTouchStart}
               onTouchMove={onTouchMove}
@@ -284,7 +305,7 @@ export default function Gallery() {
               </div>
 
               {/* Image Info */}
-              <div className="p-4 h-[120px] flex flex-col justify-between">
+              <div className="p-4 h-[180px] flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <div className="inline-block px-2 py-1 bg-teal-100 text-teal-700 text-xs font-medium rounded-full">
@@ -297,18 +318,31 @@ export default function Gallery() {
                     )}
                   </div>
                   <h2 className="text-lg font-bold text-gray-800 mb-1 line-clamp-1">{selectedImage.title}</h2>
-                  <p className="text-gray-600 text-sm line-clamp-2">
+                  <p className="text-gray-600 text-sm line-clamp-2 mb-3">
                     Experience the tranquility and healing environment of Twin Brothers Therapy.
                   </p>
                 </div>
 
-                {/* Mobile Swipe Hint */}
-                {isMobile && filteredImages.length > 1 && (
-                  <div className="flex items-center justify-center text-gray-400 text-xs mt-2">
-                    <TouchApp className="mr-1 text-sm" />
-                    Swipe to navigate
-                  </div>
-                )}
+                {/* Modal Enquiry Button */}
+                <div className="space-y-2">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => handleWhatsAppEnquiry(selectedImage.category)}
+                    className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors duration-200 shadow-sm hover:shadow-md"
+                  >
+                    <WhatsApp className="text-lg" />
+                    <span>Enquiry Now</span>
+                  </motion.button>
+
+                  {/* Mobile Swipe Hint */}
+                  {isMobile && filteredImages.length > 1 && (
+                    <div className="flex items-center justify-center text-gray-400 text-xs">
+                      <TouchApp className="mr-1 text-sm" />
+                      Swipe to navigate
+                    </div>
+                  )}
+                </div>
               </div>
             </motion.div>
           </motion.div>
@@ -330,8 +364,10 @@ export default function Gallery() {
             </p>
             <motion.button
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-teal-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors duration-300 shadow-lg w-full sm:w-auto"
+              onClick={() => handleWhatsAppEnquiry("General Consultation")}
+              className="bg-white text-teal-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors duration-300 shadow-lg w-full sm:w-auto flex items-center justify-center gap-2"
             >
+              <WhatsApp className="text-green-500" />
               Book Your Session Now
             </motion.button>
           </motion.div>
