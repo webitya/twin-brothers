@@ -131,7 +131,7 @@ export const categories = [
   "Injury Recovery",
   "Muscle recovery",
   "Facility",
-  "Auyrveda Therapy",
+  "Ayurveda Therapy",
   "Herbal Steam bath",
     "Herbal Steam bath",
     "Iastm Therapy"
