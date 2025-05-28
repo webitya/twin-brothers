@@ -25,31 +25,31 @@ export const galleryData = [
   },
    {
     id: 4,
-    category: "Cupping Treatment",
+    category: "Cupping Therapy",
     title: "Hijama and Wet Cupping",
     image: "https://res.cloudinary.com/dxqthnbx7/image/upload/v1748400618/ok1_7_ik59ph.webp",
   },
   {
     id: 5,
-      category: "Cupping Treatment",
+      category: "Cupping Therapy",
     title: "Rotetry Cupping",
     image: "https://res.cloudinary.com/dxqthnbx7/image/upload/v1748400613/ok1_3_et5317.webp?height=400&width=600",
   },
   {
     id: 6,
-         category: "Cupping Treatment",
+         category: "Cupping Therapy",
     title: "Fire Cupping",
     image: "https://res.cloudinary.com/dxqthnbx7/image/upload/v1748397870/img_1_a3qyvb.webp?height=400&width=600",
   },
   {
     id: 7,
-         category: "Cupping Treatment",
+         category: "Cupping Therapy",
     title: "Dry Cupping",
     image: "https://res.cloudinary.com/dxqthnbx7/image/upload/v1748397890/img_16_bfdg5p.webp?height=400&width=600",
   },
   {
     id: 8,
-        category: "Cupping Treatment",
+        category: "Cupping Therapy",
     title: "Wet Cupping",
     image: "https://res.cloudinary.com/dxqthnbx7/image/upload/v1748397889/img_14_y4fkr2.webp?height=400&width=600",
   },
@@ -67,12 +67,7 @@ export const galleryData = [
     title: "Sound Healing",
     image: "https://res.cloudinary.com/dxqthnbx7/image/upload/v1748397876/img_5_jegv7k.webp?height=400&width=600",
   },
-    {
-    id: 11,
-    category: "Sound Healing",
-    title: "Sound Healing",
-    image: "https://res.cloudinary.com/dxqthnbx7/image/upload/v1748397851/imgz_7_xoansa.webp?height=400&width=600",
-  },
+ 
  
  
   {
