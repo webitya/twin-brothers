@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { FilterList, Close, ArrowBackIos, ArrowForwardIos, TouchApp } from "@mui/icons-material"
 import { galleryData, categories } from "@/Components/Gallery/galleryData"
@@ -192,13 +191,11 @@ export default function Gallery() {
                 onClick={() => openModal(item, index)}
               >
                 <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
-                  <Image
-                    src={item.image || "/placeholder.svg"}
+                  <img
+                    src={item.image || "/placeholder.svg?height=400&width=600"}
                     alt={item.title}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    priority={index < 4}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading={index < 4 ? "eager" : "lazy"}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
@@ -230,14 +227,14 @@ export default function Gallery() {
         )}
       </div>
 
-      {/* Enhanced Mobile Modal */}
+      {/* Compact Centered Modal */}
       <AnimatePresence>
         {selectedImage && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center"
+            className="fixed inset-0 backdrop-blur-md bg-white/30 dark:bg-gray-900/30 z-50 flex items-center justify-center p-4"
             onClick={closeModal}
           >
             <motion.div
@@ -245,7 +242,7 @@ export default function Gallery() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="relative w-full h-full md:max-w-4xl md:max-h-[90vh] md:h-auto bg-white md:rounded-xl overflow-hidden"
+              className="relative bg-white/80 backdrop-blur-sm border border-white/20 rounded-xl overflow-hidden shadow-2xl max-w-[500px] max-h-[320px] w-full"
               onClick={(e) => e.stopPropagation()}
               onTouchStart={onTouchStart}
               onTouchMove={onTouchMove}
@@ -254,9 +251,9 @@ export default function Gallery() {
               {/* Close Button */}
               <button
                 onClick={closeModal}
-                className="absolute top-4 right-4 z-20 bg-black/70 hover:bg-black/90 text-white rounded-full p-3 transition-all duration-200 flex items-center justify-center"
+                className="absolute top-2 right-2 z-20 bg-white/30 backdrop-blur-md hover:bg-white/50 text-gray-800 rounded-full p-2 transition-all duration-200 flex items-center justify-center"
               >
-                <Close className="text-xl" />
+                <Close className="text-lg" />
               </button>
 
               {/* Navigation Arrows */}
@@ -264,53 +261,52 @@ export default function Gallery() {
                 <>
                   <button
                     onClick={prevImage}
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white rounded-full p-3 md:p-2 transition-all duration-200"
+                    className="absolute left-2 top-1/2 transform -translate-y-1/2 z-20 bg-white/30 backdrop-blur-md hover:bg-white/50 text-gray-800 rounded-full p-2 transition-all duration-200"
                   >
-                    <ArrowBackIos className="text-xl md:text-base" />
+                    <ArrowBackIos className="text-sm" />
                   </button>
                   <button
                     onClick={nextImage}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white rounded-full p-3 md:p-2 transition-all duration-200"
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 z-20 bg-white/30 backdrop-blur-md hover:bg-white/50 text-gray-800 rounded-full p-2 transition-all duration-200"
                   >
-                    <ArrowForwardIos className="text-xl md:text-base" />
+                    <ArrowForwardIos className="text-sm" />
                   </button>
                 </>
               )}
 
               {/* Image Container */}
-              <div className="relative h-[60vh] md:h-[500px] bg-black">
-                <Image
-                  src={selectedImage.image || "/placeholder.svg"}
+              <div className="relative h-[200px] bg-gray-100">
+                <img
+                  src={selectedImage.image || "/placeholder.svg?height=400&width=600"}
                   alt={selectedImage.title}
-                  fill
-                  className="object-contain"
-                  sizes="100vw"
-                  priority
+                  className="w-full h-full object-cover"
                 />
               </div>
 
               {/* Image Info */}
-              <div className="p-4 md:p-6 bg-white">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="inline-block px-3 py-1 bg-teal-100 text-teal-700 text-sm font-medium rounded-full">
-                    {selectedImage.category}
+              <div className="p-4 h-[120px] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="inline-block px-2 py-1 bg-teal-100 text-teal-700 text-xs font-medium rounded-full">
+                      {selectedImage.category}
+                    </div>
+                    {filteredImages.length > 1 && (
+                      <span className="text-xs text-gray-500">
+                        {currentImageIndex + 1} of {filteredImages.length}
+                      </span>
+                    )}
                   </div>
-                  {filteredImages.length > 1 && (
-                    <span className="text-sm text-gray-500">
-                      {currentImageIndex + 1} of {filteredImages.length}
-                    </span>
-                  )}
+                  <h2 className="text-lg font-bold text-gray-800 mb-1 line-clamp-1">{selectedImage.title}</h2>
+                  <p className="text-gray-600 text-sm line-clamp-2">
+                    Experience the tranquility and healing environment of Twin Brothers Therapy.
+                  </p>
                 </div>
-                <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">{selectedImage.title}</h2>
-                <p className="text-gray-600 text-sm md:text-base">
-                  Experience the tranquility and healing environment of Twin Brothers Therapy.
-                </p>
 
                 {/* Mobile Swipe Hint */}
                 {isMobile && filteredImages.length > 1 && (
-                  <div className="flex items-center justify-center mt-4 text-gray-400 text-sm">
-                    <TouchApp className="mr-2 text-base" />
-                    Swipe left or right to navigate
+                  <div className="flex items-center justify-center text-gray-400 text-xs mt-2">
+                    <TouchApp className="mr-1 text-sm" />
+                    Swipe to navigate
                   </div>
                 )}
               </div>
