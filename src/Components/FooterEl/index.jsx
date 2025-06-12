@@ -55,6 +55,7 @@ const Footer = () => {
           </h4>
           <ul className="space-y-2 text-sm text-gray-400">
             <li><Link href="#">Swedish Massage</Link></li>
+            <li><Link href="/baby-massage-therapy">Baby Massage Therapy</Link></li>
             <li><Link href="#">Deep Tissue Therapy</Link></li>
             <li><Link href="#">Cupping Therapy</Link></li>
             <li><Link href="#">Sound Healing</Link></li>
