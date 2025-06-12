@@ -93,7 +93,7 @@ export default function Home() {
               </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Professional baby massage therapy services designed to promote your baby's health, development, and
+              Professional baby massage therapy services designed to promote your baby s health, development, and
               bonding. Trusted by families in Ranchi for gentle, caring touch.
             </p>
           </div>
@@ -206,7 +206,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-3">Regular Programs</h3>
               <p className="text-gray-600">
-                Structured programs for ongoing development and wellness support for your baby's growth
+                Structured programs for ongoing development and wellness support for your baby s growth
               </p>
               <div className="mt-4 md:mt-6 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                 <a
@@ -275,8 +275,8 @@ export default function Home() {
                   Trusted by 500+ Families in Ranchi
                 </h3>
                 <blockquote className="text-gray-600 mb-6 md:mb-8 text-base md:text-lg italic">
-                  "The care and attention our baby received was exceptional. We saw immediate improvements in sleep and
-                  overall happiness. Highly recommended for all new parents!"
+                  The care and attention our baby received was exceptional. We saw immediate improvements in sleep and
+                  overall happiness. Highly recommended for all new parents!
                 </blockquote>
                 <div className="flex justify-center space-x-1" role="img" aria-label="5 star rating">
                   {[1, 2, 3, 4, 5].map((star) => (
@@ -370,7 +370,7 @@ export default function Home() {
                   twinbrotherstherapy@contact.in
                 </a>
               </p>
-              <p className="text-gray-500 mt-3 text-sm">We'll respond within 24 hours</p>
+              <p className="text-gray-500 mt-3 text-sm">We will respond within 24 hours</p>
             </div>
           </div>
 
