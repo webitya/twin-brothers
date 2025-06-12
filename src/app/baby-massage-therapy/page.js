@@ -14,24 +14,24 @@ import {
 import Link from "next/link"
 
 export const metadata = {
-  title: "Twin Brothers Massage Therapy - Baby Massage Ranchi | Expert Care",
+  title: "Twin Brothers Massage Therapy - Newborn Baby Massage Ranchi | Expert Newborn Care",
   description:
-    "Professional baby massage therapy in Ranchi, Jharkhand. Improve your baby's sleep, reduce colic & enhance bonding. Trusted by 500+ families. Book appointment today!",
+    "Specialized newborn massage therapy in Ranchi, Jharkhand. Gentle techniques for 0-6 months babies. Reduce colic, improve sleep & bonding. Trusted by 500+ new parents!",
   keywords:
-    "baby massage therapy, infant massage, Ranchi baby care, newborn massage, baby wellness, Twin Brothers Massage Therapy, Kanke Road Ranchi",
+    "newborn massage therapy, infant massage 0-3 months, Ranchi newborn care, baby massage for colic, newborn wellness, Twin Brothers Massage Therapy, gentle newborn massage",
   openGraph: {
-    title: "Twin Brothers Massage Therapy - Baby Massage Ranchi",
+    title: "Twin Brothers Massage Therapy - Newborn Baby Massage Ranchi",
     description:
-      "Professional baby massage therapy services in Ranchi. Expert care for your little one's health and development.",
+      "Specialized newborn massage therapy services in Ranchi. Expert gentle care for your precious newborn's health and development.",
     type: "website",
     locale: "en_IN",
     siteName: "Twin Brothers Massage Therapy",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Twin Brothers Massage Therapy - Baby Massage Ranchi",
+    title: "Twin Brothers Massage Therapy - Newborn Baby Massage Ranchi",
     description:
-      "Professional baby massage therapy services in Ranchi. Expert care for your little one's health and development.",
+      "Specialized newborn massage therapy services in Ranchi. Expert gentle care for your precious newborn's health and development.",
   },
   robots: {
     index: true,
@@ -52,7 +52,7 @@ export const metadata = {
 export default function Home() {
   // WhatsApp link with pre-filled message
   const whatsappLink =
-    "https://wa.me/916299826209?text=Hello%20Twin%20Brothers%20Massage%20Therapy,%20I%20would%20like%20to%20book%20an%20appointment%20for%20baby%20massage%20therapy."
+    "https://wa.me/916299826209?text=Hello%20Twin%20Brothers%20Massage%20Therapy,%20I%20would%20like%20to%20book%20an%20appointment%20for%20newborn%20massage%20therapy."
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-blue-50 selection:bg-pink-200">
@@ -84,17 +84,17 @@ export default function Home() {
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <div className="mb-8 md:mb-10 animate-fade-in">
             <span className="inline-block px-4 py-1.5 bg-pink-100 text-pink-700 rounded-full text-sm font-medium mb-4">
-              Specialized Baby Care in Ranchi
+              Specialized Newborn Care in Ranchi
             </span>
             <h1 className="text-3xl md:text-6xl font-bold text-gray-800 mb-4 md:mb-6 tracking-tight leading-tight">
               Gentle Touch for Your
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-blue-500 block sm:inline ml-0 sm:ml-2">
-                Little One
+                Precious Newborn
               </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Professional baby massage therapy services designed to promote your baby s health, development, and
-              bonding. Trusted by families in Ranchi for gentle, caring touch.
+              Expert newborn massage therapy services (0-6 months) designed to soothe your baby, reduce colic, and
+              strengthen the precious bond between you and your little one. Trusted by new parents in Ranchi.
             </p>
           </div>
 
@@ -104,17 +104,17 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-gradient-to-r from-pink-500 to-pink-600 text-white px-6 md:px-8 py-4 rounded-full font-semibold text-lg hover:from-pink-600 hover:to-pink-700 transition-all duration-300 shadow-lg flex items-center justify-center gap-2 hover:gap-3"
-              aria-label="Book baby massage appointment via WhatsApp"
+              aria-label="Book newborn massage appointment via WhatsApp"
             >
               <MessageCircle className="w-5 h-5" />
-              Book Appointment
+              Book Newborn Session
               <ArrowRight className="w-4 h-4 sm:block hidden transition-transform group-hover:translate-x-1" />
               <ChevronRight className="w-5 h-5 sm:hidden block" />
             </a>
             <Link
               href="/about"
               className="group border-2 border-pink-500 text-pink-500 px-6 md:px-8 py-4 rounded-full font-semibold text-lg hover:bg-pink-50 transition-all duration-300 flex items-center justify-center gap-2 hover:gap-3"
-              aria-label="Learn more about Twin Brothers Massage Therapy"
+              aria-label="Learn more about Twin Brothers Newborn Massage Therapy"
             >
               Learn More
               <ArrowRight className="w-4 h-4 sm:block hidden transition-transform group-hover:translate-x-1" />
@@ -128,8 +128,10 @@ export default function Home() {
               <div className="aspect-[4/3] sm:aspect-video bg-white rounded-xl md:rounded-2xl flex items-center justify-center shadow-inner overflow-hidden">
                 <div className="text-center transform transition-transform duration-700 hover:scale-105 p-4">
                   <Heart className="text-pink-400 mb-4 md:mb-6 mx-auto w-16 h-16 md:w-20 md:h-20 animate-pulse" />
-                  <p className="text-gray-700 text-lg md:text-xl font-medium">Gentle Care for Your Baby</p>
-                  <p className="text-gray-500 mt-2 text-sm md:text-base">Nurturing touch for healthy development</p>
+                  <p className="text-gray-700 text-lg md:text-xl font-medium">Gentle Care for Your Newborn</p>
+                  <p className="text-gray-500 mt-2 text-sm md:text-base">
+                    Nurturing touch for the first months of life
+                  </p>
                 </div>
               </div>
             </div>
@@ -149,9 +151,9 @@ export default function Home() {
             <span className="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-4">
               What We Offer
             </span>
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-4">Our Baby Massage Services</h2>
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-4">Our Newborn Massage Services</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Specialized massage therapy techniques designed specifically for infants and toddlers in Ranchi
+              Gentle, specialized massage techniques designed specifically for newborns (0-6 months) in Ranchi
             </p>
           </div>
 
@@ -161,10 +163,10 @@ export default function Home() {
               <div className="bg-pink-500 p-4 rounded-full w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <Stethoscope className="text-white w-6 h-6 md:w-8 md:h-8" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">Therapeutic Massage</h3>
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">Colic Relief Massage</h3>
               <p className="text-gray-600">
-                Gentle therapeutic techniques to improve circulation, reduce colic, and promote better sleep for your
-                baby
+                Specialized gentle techniques to relieve newborn colic, gas, and digestive discomfort. Perfect for fussy
+                babies and promoting peaceful sleep.
               </p>
               <div className="mt-4 md:mt-6 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                 <a
@@ -172,7 +174,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-pink-600 font-medium flex items-center justify-center gap-1 hover:gap-2 transition-all"
-                  aria-label="Book therapeutic massage appointment"
+                  aria-label="Book colic relief massage appointment"
                 >
                   Book Now <ArrowRight className="w-4 h-4" />
                 </a>
@@ -183,9 +185,10 @@ export default function Home() {
               <div className="bg-blue-500 p-4 rounded-full w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <Heart className="text-white w-6 h-6 md:w-8 md:h-8" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">Bonding Sessions</h3>
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">Parent-Newborn Bonding</h3>
               <p className="text-gray-600">
-                Parent-child bonding sessions that teach you massage techniques to use at home with your baby
+                Learn gentle massage techniques to strengthen the bond with your newborn. Perfect for new parents
+                wanting to connect with their precious little one.
               </p>
               <div className="mt-4 md:mt-6 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                 <a
@@ -193,7 +196,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 font-medium flex items-center justify-center gap-1 hover:gap-2 transition-all"
-                  aria-label="Book bonding session appointment"
+                  aria-label="Book parent-newborn bonding session"
                 >
                   Book Now <ArrowRight className="w-4 h-4" />
                 </a>
@@ -204,9 +207,10 @@ export default function Home() {
               <div className="bg-purple-500 p-4 rounded-full w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <Calendar className="text-white w-6 h-6 md:w-8 md:h-8" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">Regular Programs</h3>
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">Early Development Support</h3>
               <p className="text-gray-600">
-                Structured programs for ongoing development and wellness support for your baby s growth
+                Regular massage sessions to support your newborn s early development, muscle tone, and neurological
+                growth during the crucial first months.
               </p>
               <div className="mt-4 md:mt-6 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                 <a
@@ -214,7 +218,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-purple-600 font-medium flex items-center justify-center gap-1 hover:gap-2 transition-all"
-                  aria-label="Book regular program appointment"
+                  aria-label="Book early development support session"
                 >
                   Book Now <ArrowRight className="w-4 h-4" />
                 </a>
@@ -231,19 +235,21 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
             <div className="order-2 lg:order-1">
               <span className="inline-block px-4 py-1.5 bg-green-100 text-green-700 rounded-full text-sm font-medium mb-4">
-                Why Choose Us
+                Why Choose Us for Your Newborn
               </span>
               <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-6 md:mb-8">
-                Benefits of Baby Massage Therapy
+                Benefits of Newborn Massage Therapy
               </h2>
               <div className="space-y-4 md:space-y-5">
                 {[
-                  "Improves sleep quality and duration",
-                  "Reduces crying and fussiness",
-                  "Enhances parent-child bonding",
-                  "Promotes healthy weight gain",
-                  "Boosts immune system development",
-                  "Aids in digestive health",
+                  "Reduces colic and gas discomfort in newborns",
+                  "Improves sleep patterns and duration",
+                  "Strengthens parent-newborn bonding",
+                  "Supports healthy weight gain",
+                  "Enhances neurological development",
+                  "Boosts immune system in early months",
+                  "Calms fussy and crying newborns",
+                  "Promotes better digestion and circulation",
                 ].map((benefit, index) => (
                   <div key={index} className="flex items-center space-x-3 md:space-x-4 group">
                     <div className="bg-white p-2 rounded-full shadow-md group-hover:bg-green-50 transition-colors duration-300">
@@ -259,10 +265,10 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-full font-medium hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-md"
-                  aria-label="Book baby massage session"
+                  aria-label="Book newborn massage session"
                 >
                   <MessageCircle className="w-5 h-5" />
-                  Book a Session
+                  Book a Newborn Session
                 </a>
               </div>
             </div>
@@ -272,18 +278,18 @@ export default function Home() {
                   <Star className="text-white w-8 h-8 md:w-12 md:h-12" />
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">
-                  Trusted by 500+ Families in Ranchi
+                  Trusted by 500+ New Parents in Ranchi
                 </h3>
                 <blockquote className="text-gray-600 mb-6 md:mb-8 text-base md:text-lg italic">
-                  The care and attention our baby received was exceptional. We saw immediate improvements in sleep and
-                  overall happiness. Highly recommended for all new parents!
+                  Our 2-month-old was so colicky and fussy. After just 3 sessions, she sleeps better and cries much
+                  less. The gentle techniques really work! Highly recommended for all new parents
                 </blockquote>
                 <div className="flex justify-center space-x-1" role="img" aria-label="5 star rating">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <Star key={star} className="text-yellow-400 w-5 h-5 md:w-6 md:h-6 fill-yellow-400" />
                   ))}
                 </div>
-                <cite className="mt-3 md:mt-4 text-gray-500 text-sm md:text-base">- Priya & Rahul, Happy Parents</cite>
+                <cite className="mt-3 md:mt-4 text-gray-500 text-sm md:text-base">- Anjali & Vikash, New Parents</cite>
               </div>
             </aside>
           </div>
@@ -300,8 +306,8 @@ export default function Home() {
             </span>
             <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-4">Get in Touch</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Ready to give your baby the gentle care they deserve? Contact Twin Brothers Massage Therapy in Ranchi
-              today.
+              Ready to give your precious newborn the gentle care they deserve? Contact Twin Brothers Massage Therapy in
+              Ranchi today.
             </p>
           </div>
 
@@ -380,10 +386,10 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-gradient-to-r from-pink-500 to-blue-500 text-white px-8 py-4 md:px-12 md:py-5 rounded-full font-semibold text-lg md:text-xl hover:from-pink-600 hover:to-blue-600 transition-all duration-300 shadow-lg inline-flex items-center gap-3"
-              aria-label="Schedule baby massage appointment today"
+              aria-label="Schedule newborn massage appointment today"
             >
               <MessageCircle className="w-5 h-5 md:w-6 md:h-6" />
-              Schedule Your Appointment Today
+              Schedule Your Newborn Session Today
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
