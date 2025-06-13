@@ -57,6 +57,7 @@ const Footer = () => {
             <li><Link href="#">Swedish Massage</Link></li>
             <li><Link href="/new-born-baby-massage">New Born Baby Massage </Link></li>
             <li><Link href="/nutrition">Nutrition</Link></li>
+            <li><Link href="/counseling-psychotherapy">Counseling & Psychotherapy</Link></li>
              <li><Link href="#">Deep Tissue Therapy</Link></li>
             <li><Link href="/physiotherapy">Physiotherapy - Consultation & Sessions </Link></li>
             <li><Link href="#">Cupping Therapy</Link></li>
