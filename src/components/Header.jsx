@@ -25,9 +25,9 @@ export default function Header() {
   // Prevent scroll when drawer is open
   useEffect(() => {
     if (open) {
-      document.body.classList.add("overflow-hidden")
+      document.body.style.overflow = "hidden"
     } else {
-      document.body.classList.remove("overflow-hidden")
+      document.body.style.overflow = ""
     }
   }, [open])
 
@@ -73,10 +73,10 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Overlay */}
+      {/* Overlay (click to close) */}
       {open && (
         <div
-          className="fixed inset-0  z-[19999]"
+          className="fixed inset-0 bg-black/40 z-[19999]"
           onClick={() => setOpen(false)}
         />
       )}
@@ -100,7 +100,7 @@ export default function Header() {
         </div>
 
         {/* Drawer Links */}
-        <nav className="flex flex-col gap-3 px-6 mt-6 bg-white">
+        <nav className="flex flex-col gap-3 px-6 mt-6 bg-white overflow-y-auto">
           {navLinks.map((n) => (
             <Link
               key={n.href}
