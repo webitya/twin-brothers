@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { uploadToGalleryBuffer } from "../../../lib/cloudinary"
+import { uploadToGalleryBuffer } from "../../../lib/db"
 
 export async function POST(req) {
   try {
