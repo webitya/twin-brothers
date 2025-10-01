@@ -24,27 +24,21 @@ export default function Header() {
   const drawerRef = useRef(null)
   const scrollYRef = useRef(0)
 
-  // Robust scroll lock: allows scrolling inside drawer but prevents all background scrolling
+  // Robust scroll lock
   useEffect(() => {
     const drawerEl = drawerRef.current
     let applied = false
 
     const preventScroll = (e) => {
-      // allow events that originate inside the drawer so the drawer can scroll
       if (drawerEl && drawerEl.contains(e.target)) return
       e.preventDefault()
     }
 
     const onKeyDown = (e) => {
-      // don't block typing in inputs
       const active = document.activeElement
       const tag = active?.tagName
-      const isInput =
-        tag === "INPUT" || tag === "TEXTAREA" || active?.isContentEditable
-
-      if (isInput) return
-
-      // keys that may cause page scrolling
+      if (tag === "INPUT" || tag === "TEXTAREA" || active?.isContentEditable)
+        return
       const blockingCodes = [
         "Space",
         "PageUp",
@@ -54,9 +48,7 @@ export default function Header() {
         "ArrowUp",
         "ArrowDown",
       ]
-
       if (blockingCodes.includes(e.code) || blockingCodes.includes(e.key)) {
-        // allow arrow/space when focus is inside drawer
         if (drawerEl && drawerEl.contains(active)) return
         e.preventDefault()
       }
@@ -64,32 +56,27 @@ export default function Header() {
 
     if (open && typeof window !== "undefined") {
       applied = true
-      // remember scroll position
-      scrollYRef.current = window.scrollY || window.pageYOffset || 0
+      scrollYRef.current = window.scrollY || 0
 
-      // lock page by fixing body to its current scroll position
       document.body.style.position = "fixed"
       document.body.style.top = `-${scrollYRef.current}px`
       document.body.style.left = "0"
       document.body.style.right = "0"
       document.body.style.width = "100%"
-
-      // also hide any html overflow as backup
       document.documentElement.style.overflow = "hidden"
+      document.documentElement.style.overscrollBehavior = "none"
+      document.documentElement.style.overflowX = "hidden" // 🚀 prevent horizontal scroll
 
-      // block native scroll not originating from drawer
       document.addEventListener("touchmove", preventScroll, { passive: false })
       document.addEventListener("wheel", preventScroll, { passive: false })
       document.addEventListener("keydown", onKeyDown, { passive: false })
     }
 
     return () => {
-      // cleanup listeners
       document.removeEventListener("touchmove", preventScroll)
       document.removeEventListener("wheel", preventScroll)
       document.removeEventListener("keydown", onKeyDown)
 
-      // restore styles & scroll only if we applied lock
       if (applied) {
         document.body.style.position = ""
         document.body.style.top = ""
@@ -97,15 +84,16 @@ export default function Header() {
         document.body.style.right = ""
         document.body.style.width = ""
         document.documentElement.style.overflow = ""
+        document.documentElement.style.overscrollBehavior = ""
+        document.documentElement.style.overflowX = ""
 
-        // restore previous scroll position
         window.scrollTo(0, scrollYRef.current)
       }
     }
   }, [open])
 
   return (
-    <header className="border-b border-slate-200 sticky top-0 z-40 bg-white/90 backdrop-blur">
+    <header className="border-b border-slate-200 sticky top-0 z-40 bg-white/90 backdrop-blur overflow-x-hidden">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link
@@ -149,21 +137,18 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Overlay (click to close) */}
+      {/* Overlay */}
       {open && (
         <div
           className="fixed inset-0 bg-black/40 z-[19999]"
           onClick={() => setOpen(false)}
-          aria-hidden="true"
         />
       )}
 
       {/* Drawer */}
       <aside
         ref={drawerRef}
-        role="dialog"
-        aria-modal="true"
-        className={`fixed top-0 right-0 h-[100vh] w-72 sm:w-80 bg-white shadow-xl z-[20000] flex flex-col transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-screen w-72 sm:w-80 bg-white shadow-xl z-[20000] flex flex-col transform transition-transform duration-300 ease-in-out will-change-transform ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -173,17 +158,13 @@ export default function Header() {
           <button
             className="text-gray-600 hover:bg-gray-100 p-2 rounded-full"
             onClick={() => setOpen(false)}
-            aria-label="Close menu"
           >
             <CloseIcon fontSize="medium" />
           </button>
         </div>
 
-        {/* Drawer Links (drawer is scrollable) */}
-        <nav
-          className="flex flex-col gap-3 px-6 mt-6 bg-white overflow-y-auto"
-          style={{ WebkitOverflowScrolling: "touch" }}
-        >
+        {/* Drawer Links */}
+        <nav className="flex flex-col gap-3 px-6 mt-6 bg-white overflow-y-auto">
           {navLinks.map((n) => (
             <Link
               key={n.href}
@@ -199,7 +180,7 @@ export default function Header() {
             </Link>
           ))}
 
-          {/* Admin Button (Mobile CTA) */}
+          {/* Admin Button */}
           <Link
             href="/admin/login"
             onClick={() => setOpen(false)}
