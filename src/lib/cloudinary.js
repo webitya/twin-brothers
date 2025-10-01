@@ -2,7 +2,7 @@ import { v2 as cloudinary } from "cloudinary";
 
 const DEFAULT_FOLDER = process.env.CLOUDINARY_FOLDER || "massage-gallery";
 
-// Ensure singleton in dev/Next.js
+// Ensure singleton configuration for Next.js hot reload
 if (!globalThis.__cloudinaryConfigured) {
   cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -14,10 +14,11 @@ if (!globalThis.__cloudinaryConfigured) {
 }
 
 /**
- * Create a transformed URL for thumbnails.
+ * Generate a thumbnail URL
+ * @param {string} publicId
+ * @returns {string}
  */
-function buildThumbUrl(publicId) {
-  // 600x600 center-cropped, auto format/quality
+export function buildThumbUrl(publicId) {
   return cloudinary.url(publicId, {
     transformation: [
       { width: 600, height: 600, crop: "fill", gravity: "auto" },
@@ -28,7 +29,10 @@ function buildThumbUrl(publicId) {
 }
 
 /**
- * List recent images from Cloudinary by folder.
+ * List images from a Cloudinary folder
+ * @param {number} limit
+ * @param {string} folder
+ * @returns {Promise<Array>}
  */
 export async function listGalleryImages(limit = 50, folder = DEFAULT_FOLDER) {
   const res = await cloudinary.api.resources({
@@ -38,7 +42,7 @@ export async function listGalleryImages(limit = 50, folder = DEFAULT_FOLDER) {
     direction: "desc",
   });
 
-  const items = (res.resources || []).map((r) => ({
+  return (res.resources || []).map((r) => ({
     public_id: r.public_id,
     url: r.secure_url,
     thumb: buildThumbUrl(r.public_id),
@@ -47,12 +51,15 @@ export async function listGalleryImages(limit = 50, folder = DEFAULT_FOLDER) {
     format: r.format,
     created_at: r.created_at,
   }));
-
-  return items;
 }
 
 /**
- * Upload a buffer to Cloudinary into the configured folder.
+ * Upload a buffer to Cloudinary
+ * @param {Buffer} buf
+ * @param {string} filename
+ * @param {string} folder
+ * @param {object} options
+ * @returns {Promise<object>}
  */
 export async function uploadToGalleryBuffer(buf, filename, folder = DEFAULT_FOLDER, options = {}) {
   const uploadOptions = {
@@ -64,13 +71,11 @@ export async function uploadToGalleryBuffer(buf, filename, folder = DEFAULT_FOLD
     ...options,
   };
 
-  const uploaded = await new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(uploadOptions, (err, result) => {
       if (err || !result) return reject(err);
       resolve(result);
     });
     stream.end(buf);
   });
-
-  return uploaded;
 }
