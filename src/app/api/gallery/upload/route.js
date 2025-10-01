@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { uploadToGalleryBuffer } from "@/lib/cloudinary"; // Make sure path is correct
+import { uploadToGalleryBuffer } from "../../../../lib/cloudinary"; // Make sure path is correct
 
 export async function POST(req) {
   try {
