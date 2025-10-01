@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": true,
+    "incremental": true,
+    "module": "esnext",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx"
+, "src/app/layout.jsx", "src/components/gallery-grid.js", "src/components/gallery-uploader.js", "src/app/gallery/page.jsx", "src/app/api/gallery/upload/route.js", "src/app/api/gallery/route.js", "src/lib/cloudinary.js", "src/components/theme-provider.jsx"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
