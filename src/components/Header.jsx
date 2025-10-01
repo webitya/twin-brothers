@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import SpaIcon from "@mui/icons-material/Spa"
@@ -21,13 +21,86 @@ const navLinks = [
 export default function Header() {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
+  const drawerRef = useRef(null)
+  const scrollYRef = useRef(0)
 
-  // Prevent scroll when drawer is open
+  // Robust scroll lock: allows scrolling inside drawer but prevents all background scrolling
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
+    const drawerEl = drawerRef.current
+    let applied = false
+
+    const preventScroll = (e) => {
+      // allow events that originate inside the drawer so the drawer can scroll
+      if (drawerEl && drawerEl.contains(e.target)) return
+      e.preventDefault()
+    }
+
+    const onKeyDown = (e) => {
+      // don't block typing in inputs
+      const active = document.activeElement
+      const tag = active?.tagName
+      const isInput =
+        tag === "INPUT" || tag === "TEXTAREA" || active?.isContentEditable
+
+      if (isInput) return
+
+      // keys that may cause page scrolling
+      const blockingCodes = [
+        "Space",
+        "PageUp",
+        "PageDown",
+        "End",
+        "Home",
+        "ArrowUp",
+        "ArrowDown",
+      ]
+
+      if (blockingCodes.includes(e.code) || blockingCodes.includes(e.key)) {
+        // allow arrow/space when focus is inside drawer
+        if (drawerEl && drawerEl.contains(active)) return
+        e.preventDefault()
+      }
+    }
+
+    if (open && typeof window !== "undefined") {
+      applied = true
+      // remember scroll position
+      scrollYRef.current = window.scrollY || window.pageYOffset || 0
+
+      // lock page by fixing body to its current scroll position
+      document.body.style.position = "fixed"
+      document.body.style.top = `-${scrollYRef.current}px`
+      document.body.style.left = "0"
+      document.body.style.right = "0"
+      document.body.style.width = "100%"
+
+      // also hide any html overflow as backup
+      document.documentElement.style.overflow = "hidden"
+
+      // block native scroll not originating from drawer
+      document.addEventListener("touchmove", preventScroll, { passive: false })
+      document.addEventListener("wheel", preventScroll, { passive: false })
+      document.addEventListener("keydown", onKeyDown, { passive: false })
+    }
+
+    return () => {
+      // cleanup listeners
+      document.removeEventListener("touchmove", preventScroll)
+      document.removeEventListener("wheel", preventScroll)
+      document.removeEventListener("keydown", onKeyDown)
+
+      // restore styles & scroll only if we applied lock
+      if (applied) {
+        document.body.style.position = ""
+        document.body.style.top = ""
+        document.body.style.left = ""
+        document.body.style.right = ""
+        document.body.style.width = ""
+        document.documentElement.style.overflow = ""
+
+        // restore previous scroll position
+        window.scrollTo(0, scrollYRef.current)
+      }
     }
   }, [open])
 
@@ -35,7 +108,10 @@ export default function Header() {
     <header className="border-b border-slate-200 sticky top-0 z-40 bg-white/90 backdrop-blur">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 text-teal-700 font-semibold text-lg">
+        <Link
+          href="/"
+          className="flex items-center gap-2 text-teal-700 font-semibold text-lg"
+        >
           <SpaIcon className="text-teal-600" />
           <span>Twin Brothers Therapy</span>
         </Link>
@@ -78,11 +154,15 @@ export default function Header() {
         <div
           className="fixed inset-0 bg-black/40 z-[19999]"
           onClick={() => setOpen(false)}
+          aria-hidden="true"
         />
       )}
 
       {/* Drawer */}
-      <div
+      <aside
+        ref={drawerRef}
+        role="dialog"
+        aria-modal="true"
         className={`fixed top-0 right-0 h-[100vh] w-72 sm:w-80 bg-white shadow-xl z-[20000] flex flex-col transform transition-transform duration-300 ease-in-out ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
@@ -99,8 +179,11 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Drawer Links */}
-        <nav className="flex flex-col gap-3 px-6 mt-6 bg-white overflow-y-auto">
+        {/* Drawer Links (drawer is scrollable) */}
+        <nav
+          className="flex flex-col gap-3 px-6 mt-6 bg-white overflow-y-auto"
+          style={{ WebkitOverflowScrolling: "touch" }}
+        >
           {navLinks.map((n) => (
             <Link
               key={n.href}
@@ -125,7 +208,7 @@ export default function Header() {
             Admin
           </Link>
         </nav>
-      </div>
+      </aside>
     </header>
   )
 }
