@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/layout.jsx", "src/components/gallery-grid.js", "src/components/gallery-uploader.js", "src/app/gallery/page.jsx", "src/app/api/gallery/upload/route.js", "src/app/api/gallery/route.js", "src/lib/cloudinary.js", "src/components/theme-provider.jsx", "src/lib/utils.js", "src/components/ui/accordion.js", "src/components/ui/alert-dialog.js", "src/components/ui/use-toast.js", "src/components/ui/button.js", "src/components/ui/toast.jsx", "src/hooks/use-toast.js", "src/hooks/use-mobile.js"  ],
+, "src/app/layout.jsx", "src/components/GalleryGrid.jsx", "src/components/gallery-uploader.js", "src/app/gallery/page.jsx", "src/app/api/gallery/upload/route.js", "src/app/api/gallery/route.js", "src/lib/cloudinary.js", "src/components/theme-provider.jsx", "src/lib/utils.js", "src/components/ui/accordion.js", "src/components/ui/alert-dialog.js", "src/components/ui/use-toast.js", "src/components/ui/button.js", "src/components/ui/toast.jsx", "src/hooks/use-toast.js", "src/hooks/use-mobile.js"  ],
   "exclude": [
     "node_modules"
   ]

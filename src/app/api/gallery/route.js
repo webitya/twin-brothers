@@ -1,14 +1,16 @@
 import { NextResponse } from "next/server"
-import { listGalleryImages } from "../../../lib/cloudinary"
+import { connectDB } from "../../../lib/db"
+import GalleryImage from "../../../models/GalleryImage"
+
+export const runtime = "nodejs"
 
 export async function GET() {
   try {
-    const items = await listGalleryImages(50)
-    return NextResponse.json({ items })
+    await connectDB()
+    const images = await GalleryImage.find({}).sort({ createdAt: -1 }).lean()
+    return NextResponse.json({ images })
   } catch (err) {
-    return NextResponse.json(
-      { error: "Failed to list images", details: err?.message ?? String(err) },
-      { status: 500 }
-    )
+    console.error("[v0] Gallery list error:", err)
+    return NextResponse.json({ error: "Failed to load gallery" }, { status: 500 })
   }
 }

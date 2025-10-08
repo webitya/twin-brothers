@@ -6,6 +6,7 @@ import BlogsTable from "../../components/admin/BlogsTable"
 import BlogForm from "../../components/admin/BlogForm"
 import DashboardIcon from "@mui/icons-material/Dashboard"
 import LogoutIcon from "@mui/icons-material/Logout"
+import GalleryUploader from "../../components/admin/GalleryUploader"
 
 export default function AdminPage() {
   const [tab, setTab] = useState("contacts")
@@ -30,7 +31,7 @@ export default function AdminPage() {
         </button>
       </div>
       <div className="mt-6 flex gap-2">
-        {["contacts", "leads", "blogs"].map((t) => (
+        {["contacts", "leads", "blogs", "gallery"].map((t) => (
           <button
             key={t}
             onClick={() => setTab(t)}
@@ -52,6 +53,11 @@ export default function AdminPage() {
               }}
             />
             <BlogsTable />
+          </div>
+        )}
+        {tab === "gallery" && (
+          <div className="mt-4">
+            <GalleryUploader />
           </div>
         )}
       </div>
