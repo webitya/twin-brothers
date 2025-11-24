@@ -122,7 +122,7 @@ export default function BlogsManager() {
   }
 
   const handleDelete = async (id) => {
-    if (confirm("Are you sure?")) {
+    if (confirm("Are you sure you want to delete this blog?")) {
       try {
         await fetch(`/api/blogs/${id}`, { method: "DELETE" })
         fetchBlogs()
@@ -134,7 +134,16 @@ export default function BlogsManager() {
 
   const handleEdit = (blog) => {
     setEditingId(blog._id)
-    setFormData(blog)
+    setFormData({
+      title: blog.title || "",
+      metaTitle: blog.metaTitle || "",
+      metaDescription: blog.metaDescription || "",
+      slug: blog.slug || "",
+      mainContent: blog.mainContent || "",
+      bulletPoints: blog.bulletPoints || [],
+      featuredImage: blog.featuredImage || "",
+      youtubeVideos: blog.youtubeVideos || [],
+    })
   }
 
   const resetForm = () => {
@@ -152,172 +161,310 @@ export default function BlogsManager() {
   }
 
   return (
-    <div className="space-y-8">
-      <div className="bg-white rounded-lg shadow p-8 border border-warm-beige">
-        <h2 className="text-2xl font-serif text-charcoal mb-6 flex items-center gap-2">
-          {editingId ? <FaEdit /> : <FaPlus />}
-          {editingId ? "Edit Blog" : "Create New Blog"}
-        </h2>
-
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-charcoal font-bold mb-2">Blog Title *</label>
-              <input
-                type="text"
-                name="title"
-                value={formData.title}
-                onChange={handleInputChange}
-                required
-                className="w-full px-4 py-2 border border-warm-beige rounded focus:outline-none focus:border-accent-gold"
-              />
-            </div>
-
-            <div>
-              <label className="block text-charcoal font-bold mb-2">URL Slug *</label>
-              <input
-                type="text"
-                name="slug"
-                value={formData.slug}
-                onChange={handleInputChange}
-                required
-                className="w-full px-4 py-2 border border-warm-beige rounded focus:outline-none focus:border-accent-gold"
-                placeholder="my-blog-post"
-              />
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-charcoal font-bold mb-2">Meta Title (SEO) *</label>
-              <input
-                type="text"
-                name="metaTitle"
-                value={formData.metaTitle}
-                onChange={handleInputChange}
-                required
-                className="w-full px-4 py-2 border border-warm-beige rounded focus:outline-none focus:border-accent-gold"
-              />
-            </div>
-
-            <div>
-              <label className="block text-charcoal font-bold mb-2">Meta Description (SEO) *</label>
-              <textarea
-                name="metaDescription"
-                value={formData.metaDescription}
-                onChange={handleInputChange}
-                required
-                className="w-full px-4 py-2 border border-warm-beige rounded focus:outline-none focus:border-accent-gold resize-none"
-                rows="2"
-                placeholder="SEO meta description (160 characters)"
-              />
-            </div>
-          </div>
-
-          <ImageUploadField label="Featured Image *" value={formData.featuredImage} onChange={handleImageChange} />
-
+    <div className="space-y-10">
+      {/* Top: Form / Editor */}
+      <div className="bg-white rounded-2xl shadow-md border border-warm-beige/60 overflow-hidden">
+        {/* Header */}
+        <div className="flex flex-wrap items-center justify-between gap-3 px-6 py-4 border-b border-warm-beige/50 bg-cream/70">
           <div>
-            <label className="block text-charcoal font-bold mb-2">Main Content *</label>
-            <RichTextEditor
-              value={formData.mainContent}
-              onChange={handleContentChange}
-              placeholder="Write your blog content here... Use the toolbar for formatting"
-            />
+            <h2 className="text-xl md:text-2xl font-serif text-charcoal flex items-center gap-2">
+              {editingId ? (
+                <>
+                  <FaEdit className="text-accent-gold" />
+                  Edit Blog
+                </>
+              ) : (
+                <>
+                  <FaPlus className="text-accent-gold" />
+                  Create New Blog
+                </>
+              )}
+            </h2>
+            <p className="text-xs md:text-sm text-muted-foreground mt-1">
+              Manage SEO-friendly blog posts for Twin Brothers Therapy wellness content.
+            </p>
           </div>
 
-          {formData.mainContent && <YouTubePreview content={formData.mainContent} />}
+          <div className="flex items-center gap-2 text-xs md:text-sm">
+            <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100">
+              Auto slug from title if left empty
+            </span>
+          </div>
+        </div>
 
-          <div>
-            <label className="block text-charcoal font-bold mb-2">Bullet Points</label>
-            {formData.bulletPoints.map((point, idx) => (
-              <div key={idx} className="flex gap-2 mb-2">
+        {/* Form body */}
+        <div className="px-6 py-6 md:py-8 space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-7">
+            {/* Title / Slug */}
+            <div className="grid md:grid-cols-2 gap-5">
+              <div>
+                <label className="block text-xs font-semibold tracking-wide text-charcoal mb-1.5 uppercase">
+                  Blog Title *
+                </label>
                 <input
                   type="text"
-                  value={point}
-                  onChange={(e) => handleBulletPointChange(idx, e.target.value)}
-                  className="flex-1 px-4 py-2 border border-warm-beige rounded focus:outline-none focus:border-accent-gold"
-                  placeholder="Bullet point"
+                  name="title"
+                  value={formData.title}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-2.5 border border-warm-beige rounded-lg focus:outline-none focus:border-accent-gold focus:ring-2 focus:ring-accent-gold/20 bg-cream text-sm"
+                  placeholder="e.g. Benefits of Sports Massage for Athletes"
                 />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold tracking-wide text-charcoal mb-1.5 uppercase">
+                  URL Slug
+                </label>
+                <input
+                  type="text"
+                  name="slug"
+                  value={formData.slug}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2.5 border border-warm-beige rounded-lg focus:outline-none focus:border-accent-gold focus:ring-2 focus:ring-accent-gold/20 bg-cream text-sm"
+                  placeholder="benefits-of-sports-massage"
+                />
+                <p className="text-[11px] text-muted-foreground mt-1">
+                  Used in the blog URL for SEO (lowercase, hyphens only).
+                </p>
+              </div>
+            </div>
+
+            {/* SEO Fields */}
+            <div className="grid md:grid-cols-2 gap-5">
+              <div>
+                <label className="block text-xs font-semibold tracking-wide text-charcoal mb-1.5 uppercase">
+                  Meta Title (SEO) *
+                </label>
+                <input
+                  type="text"
+                  name="metaTitle"
+                  value={formData.metaTitle}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-2.5 border border-warm-beige rounded-lg focus:outline-none focus:border-accent-gold focus:ring-2 focus:ring-accent-gold/20 bg-cream text-sm"
+                  placeholder="Sports Massage Therapy in Ranchi | Twin Brothers Therapy"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold tracking-wide text-charcoal mb-1.5 uppercase">
+                  Meta Description (SEO) *
+                </label>
+                <textarea
+                  name="metaDescription"
+                  value={formData.metaDescription}
+                  onChange={handleInputChange}
+                  required
+                  rows={3}
+                  className="w-full px-4 py-2.5 border border-warm-beige rounded-lg focus:outline-none focus:border-accent-gold focus:ring-2 focus:ring-accent-gold/20 bg-cream text-sm resize-none"
+                  placeholder="Short, compelling summary that appears in Google search results (up to ~160 characters)."
+                />
+              </div>
+            </div>
+
+            {/* Featured Image */}
+            <div className="border border-dashed border-warm-beige rounded-xl p-4 bg-cream/60">
+              <ImageUploadField
+                label="Featured Image *"
+                value={formData.featuredImage}
+                onChange={handleImageChange}
+              />
+              <p className="text-[11px] text-muted-foreground mt-1">
+                Use a clear, high-quality image (ideal aspect ratio 16:9) for blog thumbnails.
+              </p>
+            </div>
+
+            {/* Main Content */}
+            <div>
+              <label className="block text-xs font-semibold tracking-wide text-charcoal mb-1.5 uppercase">
+                Main Content *
+              </label>
+              <div className="rounded-xl border border-warm-beige bg-cream/60 overflow-hidden">
+                <RichTextEditor
+                  value={formData.mainContent}
+                  onChange={handleContentChange}
+                  placeholder="Write your blog content here... Use headings, bold text, bullet points and links for better readability."
+                />
+              </div>
+            </div>
+
+            {/* YouTube Preview (if any links inside content) */}
+            {formData.mainContent && (
+              <div className="bg-cream/70 border border-warm-beige rounded-xl p-4">
+                <p className="text-xs font-semibold text-charcoal mb-2 uppercase">
+                  Embedded YouTube Videos (Auto-detected)
+                </p>
+                <YouTubePreview content={formData.mainContent} />
+              </div>
+            )}
+
+            {/* Bullet Points */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between gap-2">
+                <label className="block text-xs font-semibold tracking-wide text-charcoal uppercase">
+                  Bullet Points (Optional Highlights)
+                </label>
                 <button
                   type="button"
-                  onClick={() => removeBulletPoint(idx)}
-                  className="bg-red-500 text-white px-3 py-2 rounded hover:bg-red-600"
+                  onClick={addBulletPoint}
+                  className="text-xs px-3 py-1.5 rounded-full bg-accent-gold text-cream hover:bg-warm-beige transition-all flex items-center gap-1"
                 >
-                  Remove
+                  <span className="text-sm">＋</span> Add bullet
                 </button>
               </div>
-            ))}
-            <button
-              type="button"
-              onClick={addBulletPoint}
-              className="bg-accent-gold text-cream px-4 py-2 rounded hover:bg-warm-beige text-sm"
-            >
-              + Add Bullet Point
-            </button>
-          </div>
 
-          <div className="flex gap-2 pt-4">
-            <button
-              type="submit"
-              disabled={submitting}
-              className="flex items-center gap-2 bg-accent-gold text-cream px-6 py-2 rounded hover:bg-warm-beige transition-all"
-            >
-              {submitting ? (
-                <>
-                  <FaSpinner className="animate-spin" />
-                  Saving...
-                </>
-              ) : editingId ? (
-                "Update Blog"
-              ) : (
-                "Create Blog"
+              {formData.bulletPoints.length > 0 && (
+                <div className="space-y-2">
+                  {formData.bulletPoints.map((point, idx) => (
+                    <div key={idx} className="flex gap-2 items-center">
+                      <span className="text-xs px-2 py-1 rounded-full bg-cream text-charcoal border border-warm-beige">
+                        #{idx + 1}
+                      </span>
+                      <input
+                        type="text"
+                        value={point}
+                        onChange={(e) => handleBulletPointChange(idx, e.target.value)}
+                        className="flex-1 px-4 py-2 border border-warm-beige rounded-lg focus:outline-none focus:border-accent-gold focus:ring-2 focus:ring-accent-gold/20 bg-cream text-sm"
+                        placeholder="Key takeaway or highlight"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removeBulletPoint(idx)}
+                        className="text-xs px-3 py-2 rounded-lg bg-red-50 text-red-600 hover:bg-red-100"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ))}
+                </div>
               )}
-            </button>
-            {editingId && (
+            </div>
+
+            {/* Actions */}
+            <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-warm-beige/60 mt-2">
               <button
-                type="button"
-                onClick={resetForm}
-                className="px-6 py-2 border border-charcoal text-charcoal rounded hover:bg-warm-beige transition-all"
+                type="submit"
+                disabled={submitting}
+                className="flex items-center gap-2 bg-accent-gold text-cream px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-warm-beige hover:text-charcoal transition-all disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Cancel
+                {submitting ? (
+                  <>
+                    <FaSpinner className="animate-spin" />
+                    Saving...
+                  </>
+                ) : editingId ? (
+                  <>
+                    <FaEdit />
+                    Update Blog
+                  </>
+                ) : (
+                  <>
+                    <FaPlus />
+                    Publish Blog
+                  </>
+                )}
               </button>
-            )}
-          </div>
-        </form>
+
+              {editingId && (
+                <button
+                  type="button"
+                  onClick={resetForm}
+                  className="px-5 py-2.5 rounded-full border border-charcoal/70 text-charcoal text-sm hover:bg-cream transition-all"
+                >
+                  Cancel Editing
+                </button>
+              )}
+
+              <p className="text-[11px] text-muted-foreground ml-auto">
+                Tip: Keep paragraphs short and use headings for better readability.
+              </p>
+            </div>
+          </form>
+        </div>
       </div>
 
-      {/* Blogs List */}
-      <div className="bg-white rounded-lg shadow p-8 border border-warm-beige">
-        <h2 className="text-2xl font-serif text-charcoal mb-6">Published Blogs ({blogs.length})</h2>
+      {/* Bottom: Blogs List */}
+      <div className="bg-white rounded-2xl shadow-md border border-warm-beige/60 overflow-hidden">
+        <div className="px-6 py-4 border-b border-warm-beige/50 bg-cream/70 flex items-center justify-between">
+          <div>
+            <h2 className="text-lg md:text-xl font-serif text-charcoal">Published Blogs ({blogs.length})</h2>
+            <p className="text-xs md:text-sm text-muted-foreground mt-1">
+              View, edit, or delete existing blog posts.
+            </p>
+          </div>
+        </div>
 
         {loading ? (
-          <div className="flex justify-center py-8">
+          <div className="flex justify-center items-center py-10">
             <FaSpinner className="animate-spin text-accent-gold text-3xl" />
           </div>
         ) : blogs.length > 0 ? (
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-warm-beige">
-                  <th className="text-left py-3 px-4 font-bold text-charcoal">Title</th>
-                  <th className="text-left py-3 px-4 font-bold text-charcoal">Slug</th>
-                  <th className="text-left py-3 px-4 font-bold text-charcoal">Date</th>
-                  <th className="text-center py-3 px-4 font-bold text-charcoal">Actions</th>
+              <thead className="bg-cream/80">
+                <tr className="border-b border-warm-beige/70">
+                  <th className="text-left py-3 px-4 font-semibold text-charcoal text-xs uppercase tracking-wide">
+                    Title
+                  </th>
+                  <th className="text-left py-3 px-4 font-semibold text-charcoal text-xs uppercase tracking-wide">
+                    Slug
+                  </th>
+                  <th className="text-left py-3 px-4 font-semibold text-charcoal text-xs uppercase tracking-wide">
+                    Created
+                  </th>
+                  <th className="text-center py-3 px-4 font-semibold text-charcoal text-xs uppercase tracking-wide">
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {blogs.map((blog) => (
-                  <tr key={blog._id} className="border-b border-warm-beige hover:bg-cream">
-                    <td className="py-3 px-4 text-charcoal">{blog.title}</td>
-                    <td className="py-3 px-4 text-charcoal">{blog.slug}</td>
-                    <td className="py-3 px-4 text-charcoal text-xs">{new Date(blog.createdAt).toLocaleDateString()}</td>
-                    <td className="py-3 px-4 text-center space-x-2">
-                      <button onClick={() => handleEdit(blog)} className="text-blue-600 hover:text-blue-800">
-                        <FaEdit />
-                      </button>
-                      <button onClick={() => handleDelete(blog._id)} className="text-red-600 hover:text-red-800">
-                        <FaTrash />
-                      </button>
+                  <tr
+                    key={blog._id}
+                    className="border-b border-warm-beige/60 hover:bg-cream/60 transition-colors"
+                  >
+                    <td className="py-3 px-4 text-charcoal max-w-[260px]">
+                      <p className="font-medium truncate">{blog.title}</p>
+                      {blog.metaTitle && (
+                        <p className="text-[11px] text-muted-foreground truncate">
+                          SEO: {blog.metaTitle}
+                        </p>
+                      )}
+                    </td>
+                    <td className="py-3 px-4 text-charcoal text-xs max-w-[220px]">
+                      <span className="inline-block px-2 py-1 rounded-full bg-cream text-[11px] border border-warm-beige truncate">
+                        /blogs/{blog.slug}
+                      </span>
+                    </td>
+                    <td className="py-3 px-4 text-charcoal text-xs">
+                      {blog.createdAt
+                        ? new Date(blog.createdAt).toLocaleDateString("en-IN", {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                          })
+                        : "-"}
+                    </td>
+                    <td className="py-3 px-4 text-center">
+                      <div className="inline-flex items-center gap-2">
+                        <button
+                          onClick={() => handleEdit(blog)}
+                          className="px-3 py-1.5 rounded-full text-xs bg-blue-50 text-blue-600 hover:bg-blue-100 flex items-center gap-1"
+                          title="Edit blog"
+                        >
+                          <FaEdit />
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDelete(blog._id)}
+                          className="px-3 py-1.5 rounded-full text-xs bg-red-50 text-red-600 hover:bg-red-100 flex items-center gap-1"
+                          title="Delete blog"
+                        >
+                          <FaTrash />
+                          Delete
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -325,7 +472,12 @@ export default function BlogsManager() {
             </table>
           </div>
         ) : (
-          <p className="text-charcoal text-center py-8">No blogs yet. Create your first blog!</p>
+          <div className="py-10 px-6 text-center">
+            <p className="text-charcoal font-serif text-lg mb-1">No blogs yet</p>
+            <p className="text-muted-foreground text-sm">
+              Start by creating your first wellness article above to build your content library.
+            </p>
+          </div>
         )}
       </div>
     </div>
