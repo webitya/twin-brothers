@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { FaSpinner, FaCheck } from "react-icons/fa"
+import { useState } from "react";
+import { FaSpinner, FaCheck } from "react-icons/fa";
 
 export default function LeadsPage() {
   const [formData, setFormData] = useState({
@@ -12,27 +12,28 @@ export default function LeadsPage() {
     service: "",
     preferredDate: "",
     notes: "",
-  })
-  const [loading, setLoading] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault();
+    setLoading(true);
 
     try {
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
-      })
+      });
 
       if (res.ok) {
-        setSubmitted(true)
+        setSubmitted(true);
         setFormData({
           firstName: "",
           lastName: "",
@@ -41,15 +42,15 @@ export default function LeadsPage() {
           service: "",
           preferredDate: "",
           notes: "",
-        })
-        setTimeout(() => setSubmitted(false), 5000)
+        });
+        setTimeout(() => setSubmitted(false), 5000);
       }
     } catch (error) {
-      console.error("Error submitting lead:", error)
+      console.error("Error submitting lead:", error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const services = [
     "Relaxation Massage",
@@ -58,161 +59,173 @@ export default function LeadsPage() {
     "Aromatherapy Massage",
     "Sports Massage",
     "Prenatal Massage",
-  ]
+  ];
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-cream to-warm-beige min-h-screen">
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="font-serif text-5xl text-charcoal mb-4 text-balance">Book Your Massage</h1>
-          <p className="text-xl text-charcoal prose-text">
-            Fill out the form below and we&apos;ll confirm your appointment shortly. We look forward to helping you
-            relax and rejuvenate.
+    <section className="relative py-14 px-4 bg-gradient-to-br from-white via-teal-50/40 to-white min-h-screen overflow-hidden">
+
+      {/* Soft background glows */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div className="absolute top-0 left-0 w-72 h-72 bg-teal-200/40 blur-[110px] rounded-full" />
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-cyan-200/40 blur-[120px] rounded-full" />
+      </div>
+
+      <div className="max-w-xl mx-auto">
+
+        {/* Title */}
+        <div className="text-center mb-10">
+          <h1 className="font-serif text-4xl md:text-5xl text-teal-900 mb-3">
+            Book Your Session
+          </h1>
+          <p className="text-teal-700 text-md max-w-md mx-auto leading-relaxed">
+            Fill in the details below. Our team will contact you shortly to confirm your appointment.
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-warm-beige">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
+        {/* Form Card */}
+        <div className="bg-white border border-teal-100 shadow-md rounded-xl p-6 md:p-8">
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+
+            {/* Name */}
+            <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-charcoal font-bold mb-2">First Name *</label>
+                <label className="text-sm text-teal-900 font-semibold mb-1 block">First Name *</label>
                 <input
                   type="text"
                   name="firstName"
+                  required
                   value={formData.firstName}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-warm-beige rounded-lg focus:outline-none focus:border-accent-gold focus:ring-2 focus:ring-accent-gold/30 bg-cream"
+                  className="w-full px-3 py-2 text-sm border border-teal-200 rounded-lg focus:ring-2 focus:ring-teal-400 bg-white"
                   placeholder="John"
-                  aria-label="First name"
                 />
               </div>
 
               <div>
-                <label className="block text-charcoal font-bold mb-2">Last Name *</label>
+                <label className="text-sm text-teal-900 font-semibold mb-1 block">Last Name *</label>
                 <input
                   type="text"
                   name="lastName"
+                  required
                   value={formData.lastName}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-warm-beige rounded-lg focus:outline-none focus:border-accent-gold focus:ring-2 focus:ring-accent-gold/30 bg-cream"
+                  className="w-full px-3 py-2 text-sm border border-teal-200 rounded-lg focus:ring-2 focus:ring-teal-400 bg-white"
                   placeholder="Doe"
-                  aria-label="Last name"
                 />
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            {/* Email + Phone */}
+            <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-charcoal font-bold mb-2">Email *</label>
+                <label className="text-sm text-teal-900 font-semibold mb-1 block">Email *</label>
                 <input
                   type="email"
                   name="email"
+                  required
                   value={formData.email}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-warm-beige rounded-lg focus:outline-none focus:border-accent-gold focus:ring-2 focus:ring-accent-gold/30 bg-cream"
+                  className="w-full px-3 py-2 text-sm border border-teal-200 rounded-lg focus:ring-2 focus:ring-teal-400 bg-white"
                   placeholder="john@example.com"
-                  aria-label="Email address"
                 />
               </div>
 
               <div>
-                <label className="block text-charcoal font-bold mb-2">Phone *</label>
+                <label className="text-sm text-teal-900 font-semibold mb-1 block">Phone *</label>
                 <input
                   type="tel"
                   name="phone"
+                  required
                   value={formData.phone}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-warm-beige rounded-lg focus:outline-none focus:border-accent-gold focus:ring-2 focus:ring-accent-gold/30 bg-cream"
-                  placeholder="(555) 123-4567"
-                  aria-label="Phone number"
+                  className="w-full px-3 py-2 text-sm border border-teal-200 rounded-lg focus:ring-2 focus:ring-teal-400 bg-white"
+                  placeholder="+91 XXXXX XXXXX"
                 />
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            {/* Service + Date */}
+            <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-charcoal font-bold mb-2">Service *</label>
+                <label className="text-sm text-teal-900 font-semibold mb-1 block">Service *</label>
                 <select
                   name="service"
+                  required
                   value={formData.service}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-warm-beige rounded-lg focus:outline-none focus:border-accent-gold focus:ring-2 focus:ring-accent-gold/30 bg-cream"
-                  aria-label="Service selection"
+                  className="w-full px-3 py-2 text-sm border border-teal-200 rounded-lg focus:ring-2 focus:ring-teal-400 bg-white"
                 >
-                  <option value="">Select a service</option>
+                  <option value="">Choose a service</option>
                   {services.map((service) => (
-                    <option key={service} value={service}>
-                      {service}
-                    </option>
+                    <option key={service}>{service}</option>
                   ))}
                 </select>
               </div>
 
               <div>
-                <label className="block text-charcoal font-bold mb-2">Preferred Date *</label>
+                <label className="text-sm text-teal-900 font-semibold mb-1 block">Preferred Date *</label>
                 <input
                   type="date"
                   name="preferredDate"
+                  required
                   value={formData.preferredDate}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-warm-beige rounded-lg focus:outline-none focus:border-accent-gold focus:ring-2 focus:ring-accent-gold/30 bg-cream"
-                  aria-label="Preferred appointment date"
+                  className="w-full px-3 py-2 text-sm border border-teal-200 rounded-lg focus:ring-2 focus:ring-teal-400 bg-white"
                 />
               </div>
             </div>
 
+            {/* Notes */}
             <div>
-              <label className="block text-charcoal font-bold mb-2">Additional Notes (Optional)</label>
+              <label className="text-sm text-teal-900 font-semibold mb-1 block">
+                Additional Notes (Optional)
+              </label>
               <textarea
                 name="notes"
+                rows="3"
                 value={formData.notes}
                 onChange={handleChange}
-                rows="4"
-                className="w-full px-4 py-3 border border-warm-beige rounded-lg focus:outline-none focus:border-accent-gold focus:ring-2 focus:ring-accent-gold/30 bg-cream resize-none"
-                placeholder="Tell us about any specific concerns, preferences, or health conditions we should know about..."
-                aria-label="Additional notes"
+                className="w-full px-3 py-2 text-sm border border-teal-200 rounded-lg focus:ring-2 focus:ring-teal-400 bg-white resize-none"
+                placeholder="Any special request or condition?"
               />
             </div>
 
+            {/* Button */}
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-accent-gold text-cream py-4 rounded-lg font-serif text-lg font-bold hover:bg-warm-beige hover:text-charcoal transition-all flex items-center justify-center gap-2"
+              className="w-full bg-teal-700 text-white py-3 rounded-lg font-semibold text-sm hover:bg-teal-800 transition-all flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>
-                  <FaSpinner className="animate-spin" />
-                  Booking...
+                  <FaSpinner className="animate-spin" /> Booking...
                 </>
               ) : (
                 <>
-                  <FaCheck />
-                  Book Your Session
+                  <FaCheck /> Confirm Booking
                 </>
               )}
             </button>
 
+            {/* Success */}
             {submitted && (
-              <div className="bg-green-50 border-2 border-green-400 rounded-lg p-4 text-center">
-                <p className="text-green-700 font-bold mb-1">Booking Submitted Successfully!</p>
-                <p className="text-green-600">We&apos;ll contact you soon to confirm your appointment.</p>
+              <div className="bg-green-50 border border-green-400 rounded-lg p-3 text-center">
+                <p className="text-green-800 text-sm font-semibold">
+                  Thank you! We will contact you to confirm your appointment.
+                </p>
               </div>
             )}
+
           </form>
 
-          <div className="mt-8 pt-8 border-t border-warm-beige">
-            <p className="text-center text-charcoal text-sm">
-              Questions? Call us at (555) 123-4567 or email hello@twinbrothers.com
-            </p>
-          </div>
+          {/* Contact footer */}
+          <p className="text-center text-teal-700 text-xs mt-6">
+            For urgent help, call <span className="font-semibold">+91 62998 26209</span>  
+          </p>
+
         </div>
       </div>
     </section>
-  )
+  );
 }

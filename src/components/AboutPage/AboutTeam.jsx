@@ -1,71 +1,85 @@
+"use client";
+
 export default function AboutTeam() {
   const therapists = [
     {
       id: 1,
-      name: "Michael Johnson",
-      title: "Senior Therapist & Founder",
-      specialty: "Deep Tissue & Sports Massage",
+      name: "Kush Kumar",
+      title: "Founder & Senior Therapist",
+      specialty: "Deep Tissue • Sports Therapy • Rehabilitation",
       image: "/male-massage-therapist-professional.jpg",
-      bio: "Certified with 16 years of experience. Specializes in sports injury rehabilitation and chronic pain management.",
+      bio: "Certified therapist with over 12 years of hands-on experience in sports injury recovery, deep tissue therapy, and chronic pain relief.",
     },
     {
       id: 2,
-      name: "David Johnson",
-      title: "Senior Therapist & Founder",
-      specialty: "Relaxation & Aromatherapy",
-      image: "/male-massage-therapist-professional.jpg",
-      bio: "Certified with 15 years of experience. Experts in holistic wellness and prenatal massage therapy.",
-    },
-    {
-      id: 3,
-      name: "Sarah Williams",
-      title: "Certified Massage Therapist",
-      specialty: "Hot Stone & Swedish Massage",
+      name: "Aaradhya Verma",
+      title: "Certified Female Therapist",
+      specialty: "Relaxation • Aromatherapy • Swedish Massage",
       image: "/professional-female-massage-therapist.png",
-      bio: "Licensed with 8 years of experience. Passionate about combining traditional and modern therapeutic techniques.",
+      bio: "A licensed therapist known for her calming approach, Aaradhya specializes in relaxation techniques, aromatherapy, and Swedish wellness treatments.",
     },
-    {
-      id: 4,
-      name: "Emma Rodriguez",
-      title: "Certified Massage Therapist",
-      specialty: "Prenatal & Holistic Therapy",
-      image: "/professional-female-massage-therapist.png",
-      bio: "Licensed with 7 years of experience. Specializes in pregnancy wellness and gentle therapeutic care.",
-    },
-  ]
+  ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-charcoal mb-4">Meet Our Team</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Certified professionals dedicated to your health and healing
+    <section className="relative overflow-hidden py-20 bg-gradient-to-br from-white via-teal-50/40 to-white">
+
+      {/* Background soft blobs */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-10 left-0 w-72 h-72 bg-teal-200/40 blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-cyan-200/40 blur-[150px] rounded-full"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6">
+        
+        {/* Title */}
+        <div className="text-center mb-14">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-teal-900 mb-3">
+            Meet Our Team
+          </h2>
+          <p className="text-teal-700 text-lg max-w-xl mx-auto">
+            Skilled professionals committed to your comfort, healing, and well-being.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {therapists.map((therapist) => (
-            <div
-              key={therapist.id}
-              className="bg-cream rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
-            >
-              <div className="aspect-square bg-accent-gold/10 overflow-hidden">
+
+        {/* Team Members */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+          {therapists.map((person) => (
+            <div key={person.id} className="group text-center">
+              
+              {/* Image */}
+              <div className="relative mx-auto w-56 h-56 rounded-2xl overflow-hidden shadow-md group-hover:shadow-lg transition-all duration-300">
                 <img
-                  src={therapist.image || "/placeholder.svg"}
-                  alt={`${therapist.name}, ${therapist.title}`}
+                  src={person.image}
+                  alt={person.name}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-serif font-bold text-charcoal mb-1">{therapist.name}</h3>
-                <p className="text-accent-gold font-semibold text-sm mb-2">{therapist.title}</p>
-                <p className="text-sage font-medium text-sm mb-4">{therapist.specialty}</p>
-                <p className="text-charcoal text-sm leading-relaxed">{therapist.bio}</p>
-              </div>
+
+              {/* Name */}
+              <h3 className="text-2xl font-serif font-bold text-teal-900 mt-6">
+                {person.name}
+              </h3>
+
+              {/* Title */}
+              <p className="text-teal-700 font-medium text-sm mt-1">
+                {person.title}
+              </p>
+
+              {/* Specialty */}
+              <p className="text-teal-600 text-sm mt-1 italic">
+                {person.specialty}
+              </p>
+
+              {/* Bio */}
+              <p className="text-teal-800 text-sm leading-relaxed max-w-md mx-auto mt-4">
+                {person.bio}
+              </p>
             </div>
           ))}
+
         </div>
       </div>
     </section>
-  )
+  );
 }

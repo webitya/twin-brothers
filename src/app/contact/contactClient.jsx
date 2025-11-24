@@ -1,159 +1,189 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaSpinner } from "react-icons/fa"
+import { useState } from "react";
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaSpinner } from "react-icons/fa";
 
 export default function ContactClient() {
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" })
-  const [loading, setLoading] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault();
+    setLoading(true);
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
-      })
+      });
 
       if (res.ok) {
-        setSubmitted(true)
-        setFormData({ name: "", email: "", phone: "", message: "" })
-        setTimeout(() => setSubmitted(false), 5000)
+        setSubmitted(true);
+        setFormData({ name: "", email: "", phone: "", message: "" });
+        setTimeout(() => setSubmitted(false), 4000);
       }
     } catch (error) {
-      console.error("Error submitting form:", error)
+      console.error("Error:", error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
-    <section className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="font-serif text-5xl text-charcoal mb-4 text-balance">Contact Us</h1>
-        <p className="text-xl text-charcoal prose-text mb-16 max-w-3xl">
-          Have questions? We&apos;d love to hear from you. Get in touch with our team today.
+    <section className="relative overflow-hidden py-14 bg-gradient-to-br from-white via-teal-50/40 to-white">
+
+      {/* Background Blobs */}
+      <div className="absolute inset-0 pointer-events-none -z-10">
+        <div className="absolute -top-10 left-0 w-64 h-64 bg-teal-300/25 blur-[90px] rounded-full"></div>
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-cyan-300/25 blur-[110px] rounded-full"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4">
+
+        {/* Header */}
+        <h1 className="font-serif text-3xl  text-center md:text-4xl text-teal-900 mb-3">
+          Contact Us
+        </h1>
+
+        <p className="text-md md:text-lg text-center text-teal-700 max-w-6xl mb-10">
+          Have questions or need assistance? We’re here to help you book your wellness session.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-12 mb-16">
-          {/* Contact Info */}
-          <div>
-            <h2 className="font-serif text-3xl text-charcoal mb-8">Get In Touch</h2>
+        <div className="grid md:grid-cols-2 gap-10">
 
-            <div className="space-y-6 mb-8">
-              <div className="flex gap-4">
-                <FaMapMarkerAlt className="text-accent-gold text-xl flex-shrink-0 mt-1" />
+          {/* Contact Info */}
+          <div className="bg-white rounded-xl shadow-sm border border-teal-100 p-6">
+
+            <h2 className="font-serif text-2xl text-teal-900 mb-6">
+              Get In Touch
+            </h2>
+
+            <div className="space-y-5">
+
+              {/* Address */}
+              <div className="flex gap-3">
+                <FaMapMarkerAlt className="text-teal-700 text-xl flex-shrink-0" />
                 <div>
-                  <h3 className="font-bold text-charcoal mb-1">Address</h3>
-                  <p className="text-charcoal">
-                    123 Wellness Street
-                    <br />
-                    City, State 12345
+                  <h3 className="font-semibold text-teal-900">Address</h3>
+                  <p className="text-teal-700 text-sm leading-relaxed">
+                    Raj Complex, 1st Floor,  
+                    Near CM House, Kanke Road,  
+                    Ranchi, Jharkhand
                   </p>
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <FaPhone className="text-accent-gold text-xl flex-shrink-0 mt-1" />
+              {/* Phone */}
+              <div className="flex gap-3">
+                <FaPhone className="text-teal-700 text-xl flex-shrink-0" />
                 <div>
-                  <h3 className="font-bold text-charcoal mb-1">Phone</h3>
-                  <p className="text-charcoal">(555) 123-4567</p>
+                  <h3 className="font-semibold text-teal-900">Phone</h3>
+                  <p className="text-teal-700 text-sm leading-relaxed">
+                    +91 62998 26209 <br />
+                    +91 88047 87966
+                  </p>
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <FaEnvelope className="text-accent-gold text-xl flex-shrink-0 mt-1" />
+              {/* Email */}
+              <div className="flex gap-3">
+                <FaEnvelope className="text-teal-700 text-xl flex-shrink-0" />
                 <div>
-                  <h3 className="font-bold text-charcoal mb-1">Email</h3>
-                  <p className="text-charcoal">hello@twinbrothers.com</p>
+                  <h3 className="font-semibold text-teal-900">Email</h3>
+                  <p className="text-teal-700 text-sm">
+                    twinbrotherstherapy@gmail.com
+                  </p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-warm-beige p-6 rounded-lg">
-              <h3 className="font-bold text-charcoal mb-3">Hours</h3>
-              <p className="text-charcoal mb-2">Monday - Friday: 9:00 AM - 8:00 PM</p>
-              <p className="text-charcoal mb-2">Saturday - Sunday: 10:00 AM - 6:00 PM</p>
-              <p className="text-charcoal text-sm">Closed on major holidays</p>
+            {/* Hours */}
+            <div className="mt-8 bg-teal-600/10 p-4 rounded-lg border border-teal-100">
+              <h3 className="font-semibold text-teal-900 mb-2 text-sm">Therapy Hours</h3>
+              <p className="text-teal-700 text-sm">Mon–Fri: 9 AM – 8 PM</p>
+              <p className="text-teal-700 text-sm">Sat–Sun: 10 AM – 6 PM</p>
             </div>
+
           </div>
 
-          {/* Contact Form */}
-          <div>
-            <h2 className="font-serif text-3xl text-charcoal mb-8">Send us a Message</h2>
+          {/* Form */}
+          <div className="bg-white rounded-xl shadow-sm border border-teal-100 p-6">
+
+            <h2 className="font-serif text-2xl text-teal-900 mb-6">
+              Send a Message
+            </h2>
+
             <form onSubmit={handleSubmit} className="space-y-4">
+
               <div>
-                <label className="block text-charcoal font-medium mb-2">Full Name</label>
+                <label className="block text-teal-900 font-medium mb-1 text-sm">Full Name</label>
                 <input
-                  type="text"
                   name="name"
+                  required
                   value={formData.name}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-warm-beige rounded-lg focus:outline-none focus:border-accent-gold bg-cream"
+                  className="w-full px-3 py-2 text-sm border border-teal-200 rounded-lg focus:ring-2 focus:ring-teal-400"
                   placeholder="Your name"
-                  aria-label="Full name"
                 />
               </div>
 
               <div>
-                <label className="block text-charcoal font-medium mb-2">Email</label>
+                <label className="block text-teal-900 font-medium mb-1 text-sm">Email</label>
                 <input
                   type="email"
                   name="email"
+                  required
                   value={formData.email}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-warm-beige rounded-lg focus:outline-none focus:border-accent-gold bg-cream"
-                  placeholder="your@email.com"
-                  aria-label="Email address"
+                  className="w-full px-3 py-2 text-sm border border-teal-200 rounded-lg focus:ring-2 focus:ring-teal-400"
+                  placeholder="you@example.com"
                 />
               </div>
 
               <div>
-                <label className="block text-charcoal font-medium mb-2">Phone (Optional)</label>
+                <label className="block text-teal-900 font-medium mb-1 text-sm">Phone</label>
                 <input
-                  type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-warm-beige rounded-lg focus:outline-none focus:border-accent-gold bg-cream"
-                  placeholder="(555) 123-4567"
-                  aria-label="Phone number"
+                  className="w-full px-3 py-2 text-sm border border-teal-200 rounded-lg focus:ring-2 focus:ring-teal-400"
+                  placeholder="+91 XXXXX XXXXX"
                 />
               </div>
 
               <div>
-                <label className="block text-charcoal font-medium mb-2">Message</label>
+                <label className="block text-teal-900 font-medium mb-1 text-sm">Message</label>
                 <textarea
                   name="message"
+                  required
+                  rows="4"
                   value={formData.message}
                   onChange={handleChange}
-                  required
-                  rows="5"
-                  className="w-full px-4 py-2 border border-warm-beige rounded-lg focus:outline-none focus:border-accent-gold bg-cream resize-none"
-                  placeholder="Tell us how we can help..."
-                  aria-label="Message"
+                  className="w-full px-3 py-2 text-sm border border-teal-200 rounded-lg focus:ring-2 focus:ring-teal-400 resize-none"
+                  placeholder="How can we help you?"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-accent-gold text-cream py-3 rounded-lg font-bold hover:bg-warm-beige transition-all flex items-center justify-center gap-2"
+                className="w-full bg-teal-700 text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-teal-800 transition-all flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <>
-                    <FaSpinner className="animate-spin" />
-                    Sending...
+                    <FaSpinner className="animate-spin" /> Sending...
                   </>
                 ) : (
                   "Send Message"
@@ -161,14 +191,15 @@ export default function ContactClient() {
               </button>
 
               {submitted && (
-                <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
-                  Thank you! We&apos;ll get back to you soon.
-                </div>
+                <p className="bg-green-100 border border-green-300 text-green-700 text-sm px-4 py-2 rounded mt-2">
+                  Thank you! We will contact you shortly.
+                </p>
               )}
             </form>
+
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

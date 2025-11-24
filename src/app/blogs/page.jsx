@@ -21,7 +21,7 @@ export const metadata = {
 export default function BlogsPage() {
   return (
     <>
-      <BlogHero />
+     
       <BlogList />
     </>
   )

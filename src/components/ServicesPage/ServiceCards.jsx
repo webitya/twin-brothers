@@ -1,130 +1,159 @@
+"use client";
+
+import SpaIcon from "@mui/icons-material/Spa";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import SportsMartialArtsIcon from "@mui/icons-material/SportsMartialArts";
+import HealingIcon from "@mui/icons-material/Healing";
+import MusicNoteIcon from "@mui/icons-material/MusicNote";
+import ChildCareIcon from "@mui/icons-material/ChildCare";
+
 export default function ServiceCards() {
   const serviceDetails = [
     {
-      id: "relaxation",
-      title: "Relaxation Massage",
-      price: "$60",
+      id: "swedish",
+      title: "Swedish Massage",
       duration: "60 minutes",
       description:
-        "Gentle, soothing massage with light to medium pressure. Perfect for stress relief and overall relaxation.",
+        "A soothing, relaxing massage using long, flowing strokes designed to improve circulation and melt away stress.",
       benefits: [
-        "Reduces stress and anxiety",
-        "Improves blood circulation",
-        "Enhances sleep quality",
-        "Boosts mood and energy",
+        "Relieves stress and anxiety",
+        "Improves overall circulation",
+        "Promotes relaxation and calmness",
+        "Enhances muscle recovery",
       ],
-      icon: "🌸",
+      icon: <SpaIcon className="text-teal-700 text-4xl" />,
     },
     {
       id: "deep-tissue",
-      title: "Deep Tissue Massage",
-      price: "$75",
+      title: "Deep Tissue Therapy",
       duration: "60 minutes",
       description:
-        "Targeted massage focusing on deeper muscle layers. Ideal for chronic pain, muscle tension, and recovery.",
+        "Advanced massage focusing on deeper muscle layers to relieve chronic pain, tightness, and long-term tension.",
       benefits: [
-        "Relieves chronic pain",
-        "Improves mobility and flexibility",
-        "Releases muscle tension",
-        "Accelerates injury recovery",
+        "Releases muscle knots",
+        "Eases chronic pain",
+        "Improves posture and flexibility",
+        "Supports injury recovery",
       ],
-      icon: "💪",
+      icon: <FitnessCenterIcon className="text-teal-700 text-4xl" />,
     },
     {
-      id: "hot-stone",
-      title: "Hot Stone Massage",
-      price: "$85",
-      duration: "60 minutes",
-      description: "Combines warm stones with massage to enhance relaxation and improve blood circulation.",
-      benefits: [
-        "Deep muscle relaxation",
-        "Enhanced blood circulation",
-        "Arthritis relief",
-        "Reduces inflammation and pain",
-      ],
-      icon: "🪨",
-    },
-    {
-      id: "aromatherapy",
-      title: "Aromatherapy Massage",
-      price: "$70",
-      duration: "60 minutes",
-      description: "Therapeutic massage infused with premium essential oils for holistic healing and wellness.",
-      benefits: [
-        "Emotional balance and clarity",
-        "Immune system boost",
-        "Improved skin health",
-        "Mental clarity and focus",
-      ],
-      icon: "🌿",
-    },
-    {
-      id: "sports",
-      title: "Sports Massage",
-      price: "$75",
-      duration: "60 minutes",
-      description: "Specialized massage for athletes focusing on injury prevention and performance enhancement.",
-      benefits: [
-        "Injury prevention strategies",
-        "Faster recovery times",
-        "Increased flexibility and range",
-        "Enhanced athletic performance",
-      ],
-      icon: "⚽",
-    },
-    {
-      id: "prenatal",
-      title: "Prenatal Massage",
-      price: "$70",
+      id: "sports-massage",
+      title: "Sports Massage Therapy",
       duration: "60 minutes",
       description:
-        "Gentle massage specifically designed for expectant mothers to relieve pregnancy-related discomfort.",
+        "A specialized treatment for athletes and active individuals to prevent injuries and enhance physical performance.",
       benefits: [
-        "Reduces back and joint pain",
-        "Improves sleep quality",
-        "Decreases anxiety and stress",
-        "Supports circulation and lymph flow",
+        "Boosts flexibility",
+        "Reduces muscle fatigue",
+        "Improves performance",
+        "Accelerates recovery",
       ],
-      icon: "🦋",
+      icon: <SportsMartialArtsIcon className="text-teal-700 text-4xl" />,
     },
-  ]
+    {
+      id: "cupping",
+      title: "Cupping Therapy",
+      duration: "45 minutes",
+      description:
+        "Ancient healing therapy using suction cups to improve blood flow, release tight muscles, and detoxify the body.",
+      benefits: [
+        "Releases body toxins",
+        "Improves blood circulation",
+        "Reduces inflammation",
+        "Eases muscle stiffness",
+      ],
+      icon: <HealingIcon className="text-teal-700 text-4xl" />,
+    },
+    {
+      id: "sound-healing",
+      title: "Sound Healing Therapy",
+      duration: "45 minutes",
+      description:
+        "Healing vibrations through Tibetan bowls and sound waves to reduce stress, balance energy, and restore calm.",
+      benefits: [
+        "Balances mind & body",
+        "Relieves anxiety",
+        "Improves sleep",
+        "Promotes deep relaxation",
+      ],
+      icon: <MusicNoteIcon className="text-teal-700 text-4xl" />,
+    },
+    {
+      id: "baby-massage",
+      title: "Newborn Baby Massage",
+      duration: "30 minutes",
+      description:
+        "Gentle, nurturing massage for infants to support healthy growth, digestion, and emotional bonding.",
+      benefits: [
+        "Supports baby growth",
+        "Improves sleep cycles",
+        "Strengthens immunity",
+        "Enhances parent-baby bonding",
+      ],
+      icon: <ChildCareIcon className="text-teal-700 text-4xl" />,
+    },
+  ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-gradient-to-br from-white via-teal-50 to-white relative overflow-hidden">
+
+      {/* background subtle blobs */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-20 left-0 w-72 h-72 bg-teal-200/40 blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-cyan-200/40 blur-[150px] rounded-full"></div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        {/* Heading */}
+        <h2 className="text-4xl md:text-5xl font-serif font-bold text-teal-900 text-center mb-14">
+          Our Therapeutic Services
+        </h2>
+
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {serviceDetails.map((service) => (
             <div
               key={service.id}
               id={service.id}
-              className="bg-cream rounded-lg shadow-md hover:shadow-xl transition-all border border-warm-beige overflow-hidden"
+              className="group bg-white border border-teal-100 rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all"
             >
-              <div className="bg-accent-gold/10 p-6 flex justify-center">
-                <span className="text-5xl">{service.icon}</span>
-              </div>
-              <div className="p-8">
-                <h3 className="font-serif text-2xl font-bold text-charcoal mb-2">{service.title}</h3>
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-accent-gold font-bold text-lg">{service.price}</span>
-                  <span className="text-sm text-muted-foreground">{service.duration}</span>
-                </div>
-                <p className="text-charcoal mb-6 leading-relaxed">{service.description}</p>
-                <div>
-                  <h4 className="font-bold text-charcoal mb-3 text-sm uppercase tracking-wide">Key Benefits:</h4>
-                  <ul className="space-y-2">
-                    {service.benefits.map((benefit, idx) => (
-                      <li key={idx} className="text-charcoal text-sm flex items-start gap-3">
-                        <span className="w-1.5 h-1.5 bg-accent-gold rounded-full mt-1.5 flex-shrink-0" />
-                        <span>{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
+              {/* Icon */}
+              <div className="mb-5 flex justify-center">
+                <div className="p-4 rounded-full bg-teal-100 group-hover:bg-teal-200 transition-all">
+                  {service.icon}
                 </div>
               </div>
+
+              {/* Title */}
+              <h3 className="text-2xl font-serif font-bold text-teal-900 text-center mb-2">
+                {service.title}
+              </h3>
+
+              {/* Duration */}
+              <p className="text-sm text-teal-700 text-center mb-4">{service.duration}</p>
+
+              {/* Description */}
+              <p className="text-teal-800 text-sm mb-6 leading-relaxed text-center">
+                {service.description}
+              </p>
+
+              {/* Benefits */}
+              <h4 className="font-semibold text-sm text-teal-900 mb-3">Key Benefits:</h4>
+              <ul className="space-y-2">
+                {service.benefits.map((benefit, idx) => (
+                  <li key={idx} className="text-teal-700 text-sm flex gap-3">
+                    <span className="w-2 h-2 bg-teal-600 rounded-full mt-1.5"></span>
+                    {benefit}
+                  </li>
+                ))}
+              </ul>
+
             </div>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

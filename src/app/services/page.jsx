@@ -1,4 +1,4 @@
-import ServiceHero from "@/components/ServicesPage/ServiceHero"
+
 import ServiceCards from "@/components/ServicesPage/ServiceCards"
 import ServiceCTA from "@/components/ServicesPage/ServiceCTA"
 
@@ -23,7 +23,7 @@ export const metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <ServiceHero />
+   
       <ServiceCards />
       <ServiceCTA />
     </>

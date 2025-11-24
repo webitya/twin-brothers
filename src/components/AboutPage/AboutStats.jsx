@@ -1,3 +1,5 @@
+"use client";
+
 export default function AboutStats() {
   const stats = [
     {
@@ -20,27 +22,58 @@ export default function AboutStats() {
       label: "Specialized Services",
       description: "Diverse treatments for every wellness need",
     },
-  ]
+  ];
 
   return (
-    <section className="py-20 bg-sage/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-charcoal mb-4">Our Impact & Achievements</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A testament to our commitment to therapeutic excellence and client care
+    <section className="relative overflow-hidden py-16 bg-gradient-to-br from-teal-50 via-white to-teal-100">
+      
+      {/* Background Blobs */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-10 -left-20 w-72 h-72 bg-teal-200/40 blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-cyan-200/40 blur-[130px] rounded-full"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6">
+        
+        {/* Title */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-teal-900 mb-3">
+            Our Impact & Achievements
+          </h2>
+          <p className="text-teal-700 text-base md:text-lg max-w-2xl mx-auto">
+            A reflection of our dedication to healing, wellness, and exceptional client care.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {stats.map((stat, idx) => (
-            <div key={idx} className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow text-center">
-              <div className="text-5xl font-serif font-bold text-accent-gold mb-3">{stat.number}</div>
-              <h3 className="text-xl font-serif font-bold text-charcoal mb-2">{stat.label}</h3>
-              <p className="text-charcoal text-sm leading-relaxed">{stat.description}</p>
+            <div
+              key={idx}
+              className="group transition-all"
+            >
+              {/* Number */}
+              <div className="text-4xl md:text-5xl font-serif font-bold text-teal-800 group-hover:text-teal-900 transition-colors duration-300">
+                {stat.number}
+              </div>
+
+              {/* Label */}
+              <h3 className="text-lg font-semibold text-teal-900 mt-2">
+                {stat.label}
+              </h3>
+
+              {/* Description */}
+              <p className="text-teal-700 text-sm mt-1 leading-relaxed">
+                {stat.description}
+              </p>
+
+              {/* Soft underline animation */}
+              <div className="mt-4 w-10 h-[2px] mx-auto bg-teal-400/40 group-hover:bg-teal-600 transition-all duration-300"></div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
-  )
+  );
 }
