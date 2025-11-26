@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block admin panel
+Disallow: /admin
+Disallow: /api/
+
+Sitemap: https://www.twinbrotherstherapy.in/sitemap.xml
