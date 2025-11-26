@@ -132,7 +132,7 @@ export default function Footer() {
           <p>&copy; {currentYear} Twin Brothers Therapy, Ranchi. All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="/privacy-policy" className="hover:text-teal-900">Privacy Policy</Link>
-            <Link href="/terms-of-services" className="hover:text-teal-900">Terms of Service</Link>
+            <Link href="/terms-of-services" className="hover:text-teal-900">Terms of Services</Link>
             <Link href="/sitemap" className="hover:text-teal-900">Sitemap XML</Link>
               <Link href="/sitemap.html" className="hover:text-teal-900">Sitemap HTML</Link>
           </div>
