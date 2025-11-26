@@ -127,6 +127,20 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* SEPARATOR & CREDIT LINE */}
+        <hr className="border-t border-teal-200 mb-6" />
+
+        <p className="text-center text-xs text-teal-700 mb-10">
+          Crafted with care & precision — Website brought to life by{" "}
+          <a
+            href="https://www.webitya.com"
+            target="_blank"
+            className="font-semibold text-teal-900 hover:text-teal-600 transition-all"
+          >
+            Webitya
+          </a>
+        </p>
+
         {/* BOTTOM FOOTER */}
         <div className="border-t border-teal-200 pt-6 text-xs flex flex-col md:flex-row justify-between items-center gap-3 text-teal-700">
           <p>&copy; {currentYear} Twin Brothers Therapy, Ranchi. All rights reserved.</p>
@@ -134,7 +148,7 @@ export default function Footer() {
             <Link href="/privacy-policy" className="hover:text-teal-900">Privacy Policy</Link>
             <Link href="/terms-of-services" className="hover:text-teal-900">Terms of Services</Link>
             <Link href="/sitemap.xml" className="hover:text-teal-900">Sitemap XML</Link>
-              <Link href="/sitemap.html" className="hover:text-teal-900">Sitemap HTML</Link>
+            <Link href="/sitemap.html" className="hover:text-teal-900">Sitemap HTML</Link>
           </div>
         </div>
 
