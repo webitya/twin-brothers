@@ -7,7 +7,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-b from-white via-teal-50 to-white text-teal-900 mt-20">
+    <footer className="relative overflow-hidden bg-gradient-to-b from-white via-teal-50 to-white text-teal-900 mt-20 border-t shadow-[0_-2px_10px_rgba(0,0,0,0.06)]">
 
       {/* Background Soft Glow */}
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -47,6 +47,7 @@ export default function Footer() {
               <a
                 href="https://www.facebook.com/swadesiayurvedahealthcare/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="h-10 w-10 rounded-full flex items-center justify-center bg-white shadow hover:bg-teal-500 hover:text-white transition-all"
               >
                 <FaFacebook size={18} />
@@ -55,6 +56,7 @@ export default function Footer() {
               <a
                 href="https://www.instagram.com/twin_brothers_therapy_3/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="h-10 w-10 rounded-full flex items-center justify-center bg-white shadow hover:bg-teal-500 hover:text-white transition-all"
               >
                 <FaInstagram size={18} />
@@ -80,7 +82,7 @@ export default function Footer() {
               <li><Link href="/services#fire-cupping" className="hover:text-teal-900">Fire Cupping Therapy</Link></li>
               <li><Link href="/services#dry-cupping" className="hover:text-teal-900">Dry Cupping Therapy</Link></li>
               <li><Link href="/services#injury-recovery" className="hover:text-teal-900">Injury Recovery Session</Link></li>
-              <li><Link href="/services#sound-healing" className="hover:text-teal-900">Sound Healing Therapy</Link></li>
+              <li><Link href="/services#sound-healing" className="hover:text-teal-900">Sound Healing</Link></li>
               <li><Link href="/services#ayurveda" className="hover:text-teal-900">Ayurveda Therapy</Link></li>
             </ul>
           </div>
@@ -127,22 +129,45 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* SEPARATOR & CREDIT LINE */}
-        <hr className="border-t border-teal-200 mb-6" />
+        {/* HORIZONTAL LINE */}
+        <div className="border-t border-teal-200 pt-6"></div>
 
-        <p className="text-center text-xs text-teal-700 mb-10">
-          Crafted with care & precision — Website brought to life by{" "}
-          <a
-            href="https://www.webitya.com"
-            target="_blank"
-            className="font-semibold text-teal-900 hover:text-teal-600 transition-all"
-          >
-            Webitya
-          </a>
-        </p>
+        {/* Developed by Webitya */}
+        <div className="mt-6 text-center text-sm text-teal-800 flex flex-col items-center gap-2">
+          <p className="font-medium flex items-center gap-2">
+            Crafted with ❤️ by 
+            <a
+              href="https://www.webitya.com"
+              target="_blank"
+              className="
+                ml-1 font-semibold inline-flex items-center gap-2
+                transition-all duration-500
+                hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-500
+                hover:text-transparent hover:bg-clip-text
+              "
+            >
+              Webitya
+              <span
+                className="
+                  h-7 w-7 rounded-full overflow-hidden border border-teal-300
+                  transition-all duration-300
+                  hover:shadow-[0_0_2px_rgba(216,27,96,0.7)]
+                  hover:scale-110 
+                  hover:border-transparent 
+                "
+              >
+                <img
+                  src="/webitya-logo.jpg"
+                  alt="Webitya Logo"
+                  className="h-full w-full rounded-full object-cover"
+                />
+              </span>
+            </a>
+          </p>
+        </div>
 
         {/* BOTTOM FOOTER */}
-        <div className="border-t border-teal-200 pt-6 text-xs flex flex-col md:flex-row justify-between items-center gap-3 text-teal-700">
+        <div className="border-t border-teal-200 mt-6 pt-6 text-xs flex flex-col md:flex-row justify-between items-center gap-3 text-teal-700">
           <p>&copy; {currentYear} Twin Brothers Therapy, Ranchi. All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="/privacy-policy" className="hover:text-teal-900">Privacy Policy</Link>
