@@ -63,12 +63,15 @@ export default function LeadsPage() {
   };
 
   const services = [
-    "Relaxation Massage",
-    "Deep Tissue Massage",
-    "Hot Stone Massage",
-    "Aromatherapy Massage",
-    "Sports Massage",
-    "Prenatal Massage",
+"Sports massage therapy", 
+"Deep tissue massage therapy", 
+"Swedish massage therapy", 
+"Wet cupping / hijama therapy", 
+"Fire cupping therapy", 
+"Dry cupping therapy", 
+"Injury recovery session", 
+"Sound healing therapy session", 
+"Ayurveda therapy",
   ];
 
   return (
@@ -229,16 +232,16 @@ export default function LeadsPage() {
 
             {/* Success Message */}
             {submitted && (
-              <div className="bg-green-50 border border-green-400 rounded-lg p-3 text-center">
-                <p className="text-green-800 text-sm font-semibold">
-                  Thank you! We will contact you to confirm your appointment.
-                </p>
-              </div>
-            )}
+  <div className="bg-green-50 border border-green-400 rounded-lg p-3 text-center">
+    <p className="text-green-800 text-sm font-semibold">
+      Your slot request is submitted! To make sure your appointment is confirmed, please call us on <span className="font-bold">+91 8804787966</span>.
+    </p>
+  </div>
+)}
           </form>
 
           <p className="text-center text-teal-700 text-xs mt-6">
-            For urgent help, call <span className="font-semibold">+91 62998 26209</span>
+            For urgent help, call <span className="font-semibold">+91 8804787966</span>
           </p>
         </div>
       </div>
