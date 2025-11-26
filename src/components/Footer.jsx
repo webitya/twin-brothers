@@ -7,7 +7,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-b from-white via-teal-50 to-white text-teal-900 mt-20 border-t shadow-[0_-2px_10px_rgba(0,0,0,0.06)]">
+    <footer className="relative overflow-hidden bg-gradient-to-b from-white via-teal-100 to-white text-teal-900 mt-20 border border-t-teal-300 shadow-md">
 
       {/* Background Soft Glow */}
       <div className="pointer-events-none absolute inset-0 -z-10">
