@@ -1,155 +1,149 @@
 "use client";
 
-import SpaIcon from "@mui/icons-material/Spa";
-import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
-import SportsMartialArtsIcon from "@mui/icons-material/SportsMartialArts";
-import HealingIcon from "@mui/icons-material/Healing";
-import MusicNoteIcon from "@mui/icons-material/MusicNote";
-import ChildCareIcon from "@mui/icons-material/ChildCare";
+import Link from "next/link";
+import Image from "next/image";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import CallIcon from "@mui/icons-material/Call";
 
 export default function ServiceCards() {
-  const serviceDetails = [
+  const services = [
     {
-      id: "swedish",
-      title: "Swedish Massage",
-      duration: "60 minutes",
-      description:
-        "A soothing, relaxing massage using long, flowing strokes designed to improve circulation and melt away stress.",
-      benefits: [
-        "Relieves stress and anxiety",
-        "Improves overall circulation",
-        "Promotes relaxation and calmness",
-        "Enhances muscle recovery",
-      ],
-      icon: <SpaIcon className="text-teal-700 text-4xl" />,
-    },
-    {
-      id: "deep-tissue",
-      title: "Deep Tissue Therapy",
-      duration: "60 minutes",
-      description:
-        "Advanced massage focusing on deeper muscle layers to relieve chronic pain, tightness, and long-term tension.",
-      benefits: [
-        "Releases muscle knots",
-        "Eases chronic pain",
-        "Improves posture and flexibility",
-        "Supports injury recovery",
-      ],
-      icon: <FitnessCenterIcon className="text-teal-700 text-4xl" />,
-    },
-    {
-      id: "sports-massage",
+      id: 1,
       title: "Sports Massage Therapy",
-      duration: "60 minutes",
       description:
-        "A specialized treatment for athletes and active individuals to prevent injuries and enhance physical performance.",
-      benefits: [
-        "Boosts flexibility",
-        "Reduces muscle fatigue",
-        "Improves performance",
-        "Accelerates recovery",
-      ],
-      icon: <SportsMartialArtsIcon className="text-teal-700 text-4xl" />,
+        "Performance-focused treatment that enhances mobility, boosts muscle recovery and prevents injuries.",
+      image: "/services/sports-massage.jpg",
     },
     {
-      id: "cupping",
-      title: "Cupping Therapy",
-      duration: "45 minutes",
+      id: 2,
+      title: "Deep Tissue Massage Therapy",
       description:
-        "Ancient healing therapy using suction cups to improve blood flow, release tight muscles, and detoxify the body.",
-      benefits: [
-        "Releases body toxins",
-        "Improves blood circulation",
-        "Reduces inflammation",
-        "Eases muscle stiffness",
-      ],
-      icon: <HealingIcon className="text-teal-700 text-4xl" />,
+        "Intense pressure technique targeting deeper muscle layers to relieve chronic tension and muscle pain.",
+      image: "/services/deeptissue.jpg",
     },
     {
-      id: "sound-healing",
-      title: "Sound Healing Therapy",
-      duration: "45 minutes",
+      id: 3,
+      title: "Swedish Massage Therapy",
       description:
-        "Healing vibrations through Tibetan bowls and sound waves to reduce stress, balance energy, and restore calm.",
-      benefits: [
-        "Balances mind & body",
-        "Relieves anxiety",
-        "Improves sleep",
-        "Promotes deep relaxation",
-      ],
-      icon: <MusicNoteIcon className="text-teal-700 text-4xl" />,
+        "Gentle and relaxing massage that improves circulation, reduces stress and calms the body.",
+      image: "/services/swedish.jpeg",
     },
     {
-      id: "baby-massage",
-      title: "Newborn Baby Massage",
-      duration: "30 minutes",
+      id: 4,
+      title: "Wet Cupping / Hijama Therapy",
       description:
-        "Gentle, nurturing massage for infants to support healthy growth, digestion, and emotional bonding.",
-      benefits: [
-        "Supports baby growth",
-        "Improves sleep cycles",
-        "Strengthens immunity",
-        "Enhances parent-baby bonding",
-      ],
-      icon: <ChildCareIcon className="text-teal-700 text-4xl" />,
+        "Detoxifying therapy that removes stagnant blood, reduces inflammation and boosts immunity.",
+      image: "/services/wet-cupping.jpg",
+    },
+    {
+      id: 5,
+      title: "Fire Cupping Therapy",
+      description:
+        "Traditional therapy using heated cups to ease muscle stiffness, improve flow and release deep tension.",
+      image: "/services/fire-cupping.jpg",
+    },
+    {
+      id: 6,
+      title: "Dry Cupping Therapy",
+      description:
+        "Vacuum-based cup therapy that promotes healing, boosts blood flow and reduces pain naturally.",
+      image: "/services/dry-cupping.jpg",
+    },
+    {
+      id: 7,
+      title: "Injury Recovery Session",
+      description:
+        "Targeted therapy for sprains, muscle tears, sports injuries and post-training recovery.",
+      image: "/services/injury.webp",
+    },
+    {
+      id: 8,
+      title: "Sound Healing Therapy Session",
+      description:
+        "Healing sound vibrations that reduce stress, balance the mind and promote emotional wellness.",
+      image: "/services/sound-healing.jpg",
+    },
+    {
+      id: 9,
+      title: "Ayurveda Therapy",
+      description:
+        "Authentic ayurvedic treatment tailored to balance doshas, heal the body and restore natural harmony.",
+      image: "/services/ayurveda.jpg",
     },
   ];
 
+  const whatsappNumber = "8804787966";
+  const callNumber = "8804787966";
+
   return (
-    <section className="py-20 bg-gradient-to-br from-white via-teal-50 to-white relative overflow-hidden">
-
-      {/* background subtle blobs */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-20 left-0 w-72 h-72 bg-teal-200/40 blur-[120px] rounded-full"></div>
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-cyan-200/40 blur-[150px] rounded-full"></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+    <section className="py-16 bg-gradient-to-br from-slate-50 via-teal-50/40 to-white">
+      <div className="max-w-7xl mx-auto px-4">
         {/* Heading */}
-        <h2 className="text-4xl md:text-5xl font-serif font-bold text-teal-900 text-center mb-14">
+        <h2 className="text-center text-4xl md:text-5xl font-serif font-bold text-teal-900 mb-14">
           Our Therapeutic Services
         </h2>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {serviceDetails.map((service) => (
+        {/* GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service) => (
             <div
               key={service.id}
-              id={service.id}
-              className="group bg-white border border-teal-100 rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all"
+              className="group bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-xl transition-all overflow-hidden"
             >
-              {/* Icon */}
-              <div className="mb-5 flex justify-center">
-                <div className="p-4 rounded-full bg-teal-100 group-hover:bg-teal-200 transition-all">
-                  {service.icon}
-                </div>
+              {/* Image */}
+              <div className="h-52 w-full bg-slate-100 overflow-hidden">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  width={500}
+                  height={300}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
+                />
               </div>
 
-              {/* Title */}
-              <h3 className="text-2xl font-serif font-bold text-teal-900 text-center mb-2">
-                {service.title}
-              </h3>
+              {/* Content */}
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-teal-900 mb-2">
+                  {service.title}
+                </h3>
 
-              {/* Duration */}
-              <p className="text-sm text-teal-700 text-center mb-4">{service.duration}</p>
+                <p className="text-slate-700 text-sm leading-relaxed mb-6">
+                  {service.description}
+                </p>
 
-              {/* Description */}
-              <p className="text-teal-800 text-sm mb-6 leading-relaxed text-center">
-                {service.description}
-              </p>
+                {/* Buttons */}
+                <div className="flex items-center justify-between gap-2 pt-2">
 
-              {/* Benefits */}
-              <h4 className="font-semibold text-sm text-teal-900 mb-3">Key Benefits:</h4>
-              <ul className="space-y-2">
-                {service.benefits.map((benefit, idx) => (
-                  <li key={idx} className="text-teal-700 text-sm flex gap-3">
-                    <span className="w-2 h-2 bg-teal-600 rounded-full mt-1.5"></span>
-                    {benefit}
-                  </li>
-                ))}
-              </ul>
+                  {/* Book Now */}
+                  <Link
+                    href="/leads"
+                    className="flex-1 text-center px-4 py-2 bg-teal-600 text-white rounded-lg text-sm font-semibold hover:bg-teal-700 transition-all"
+                  >
+                    Book Now
+                  </Link>
 
+                  {/* Call Now */}
+                  <a
+                    href={`tel:${callNumber}`}
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-yellow-500 text-white rounded-lg text-sm font-semibold hover:bg-yellow-600 transition-all"
+                  >
+                    <CallIcon className="text-white" /> Call
+                  </a>
+
+                  {/* WhatsApp */}
+                  <a
+                    href={`https://wa.me/${whatsappNumber}?text=Hi, I want to book *${encodeURIComponent(
+                      service.title
+                    )}* at Twin Brother's Therapy.`}
+                    target="_blank"
+                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 border border-green-600 text-green-700 rounded-lg text-sm font-medium hover:bg-green-50 transition-all"
+                  >
+                    <WhatsAppIcon className="text-green-600" />
+                    Chat
+                  </a>
+
+                </div>
+              </div>
             </div>
           ))}
         </div>
