@@ -86,10 +86,25 @@ export default function GalleryGrid() {
           </p>
         </div>
 
-        {/* Compact Grid */}
+        {/* Skeleton Loader */}
         {loading ? (
-          <div className="text-center text-teal-700">Loading images...</div>
+          <div className="
+            grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 
+            gap-4 md:gap-6
+          ">
+            {[...Array(8)].map((_, i) => (
+              <div
+                key={i}
+                className="
+                  aspect-square w-full rounded-lg 
+                  bg-teal-100/60 animate-pulse
+                  border border-teal-200
+                "
+              ></div>
+            ))}
+          </div>
         ) : (
+          /* Final Loaded Grid */
           <div
             className="
               grid 

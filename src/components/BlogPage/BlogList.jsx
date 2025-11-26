@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import PersonIcon from "@mui/icons-material/Person";
-import BlogListSkeleton from "../skeletons/BlogListSkeleton";
 
 export default function BlogList() {
   const [blogs, setBlogs] = useState([]);
@@ -64,7 +63,6 @@ export default function BlogList() {
 
   return (
     <section className="relative overflow-hidden py-20 bg-gradient-to-br from-white via-teal-50/60 to-white">
-
       {/* Soft glowing background */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="absolute top-0 left-0 w-72 h-72 bg-teal-200/40 blur-[110px] rounded-full"></div>
@@ -72,7 +70,6 @@ export default function BlogList() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6">
-
         {/* Heading */}
         <h1 className="font-serif text-4xl md:text-5xl text-teal-900 mb-12 text-center">
           Wellness Articles
@@ -80,7 +77,30 @@ export default function BlogList() {
 
         {/* Blog Grid */}
         {loading ? (
-          <BlogListSkeleton />
+          <div
+            className="
+              grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 
+              gap-6 md:gap-8
+            "
+          >
+            {[1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className="bg-white p-6 rounded-xl border border-teal-100 shadow-sm animate-pulse"
+              >
+                <div className="flex justify-between mb-4">
+                  <div className="h-4 w-24 bg-teal-100 rounded"></div>
+                  <div className="h-4 w-16 bg-teal-100 rounded"></div>
+                </div>
+
+                <div className="h-6 w-3/4 bg-teal-100 rounded mb-3"></div>
+                <div className="h-4 w-full bg-teal-100 rounded mb-2"></div>
+                <div className="h-4 w-5/6 bg-teal-100 rounded mb-2"></div>
+
+                <div className="h-4 w-24 bg-teal-100 rounded mt-4"></div>
+              </div>
+            ))}
+          </div>
         ) : blogs.length > 0 ? (
           <div
             className="
